@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fec301c609ac184b950ce32cc047f1a, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  idleAnimationClip: {fileID: 7400000, guid: 738e3a841fc492e4d91a1bedd48a8b39, type: 2}
-  runAnimationClip: {fileID: 7400000, guid: 12cce2ff82e8da04d9f7779e4b89be67, type: 2}
+  idleAnimationClip: {fileID: 7400000, guid: 351f011c4436cec4eac3175a5b709ab3, type: 2}
+  runAnimationClip: {fileID: 7400000, guid: db61f962e2ff41c4ea7dd31437e066c9, type: 2}
