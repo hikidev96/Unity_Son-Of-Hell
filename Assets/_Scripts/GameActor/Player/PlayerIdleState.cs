@@ -38,7 +38,7 @@ namespace SOD
 
         private void PlayIdleAnimation()
         {
-
+            player.PlayAnimation(player.Data.IdleAnimationClip);
         }
     }
 }

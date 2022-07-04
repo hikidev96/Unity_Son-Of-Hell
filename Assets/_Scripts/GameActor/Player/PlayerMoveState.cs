@@ -41,7 +41,7 @@ namespace SOD
 
         private void PlayMoveAnimation()
         {
-
+            player.PlayAnimation(player.Data.RunAnimationClip);
         }
     }
 }
