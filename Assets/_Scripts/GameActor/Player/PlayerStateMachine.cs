@@ -6,26 +6,24 @@ namespace SOD
     {
         [SerializeField] private Player player;
 
-        private PlayerIdleState idleState;
         private PlayerMoveState moveState;
 
         protected override void Awake()
         {
             base.Awake();
 
-            idleState = new PlayerIdleState(player, this);
             moveState = new PlayerMoveState(player, this);
 
-            SetStartState(idleState);
-        }
-
-        public void ToIdleState()
-        {
-            ChangeState(idleState);
+            SetStartState(moveState);
         }
         
-        public void ToMoveState()
+        public void ToMoveState(State currentState)
         {
+            if (currentState != this.currentState)
+            {
+                return;
+            }
+
             ChangeState(moveState);
         }
     }

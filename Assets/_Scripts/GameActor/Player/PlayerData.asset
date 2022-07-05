@@ -12,5 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fec301c609ac184b950ce32cc047f1a, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  idleAnimationClip: {fileID: 7400000, guid: 351f011c4436cec4eac3175a5b709ab3, type: 2}
-  runAnimationClip: {fileID: 7400000, guid: db61f962e2ff41c4ea7dd31437e066c9, type: 2}
+  moveSpeed: 2
+  moveAnimationClip:
+    rid: 2734869267371261964
+  references:
+    version: 2
+    RefIds:
+    - rid: 2734869267371261964
+      type: {class: MixerTransition2D, ns: Animancer, asm: Animancer}
+      data:
+        _FadeDuration: 0.25
+        _Events:
+          _NormalizedTimes: []
+          _Callbacks: []
+          _Names: []
+        _Speed: 1
+        _Animations:
+        - {fileID: 7400000, guid: f1fdd7ea5023f284d943217555baf2d1, type: 2}
+        - {fileID: 7400000, guid: 96bb522cea8a6c04c9f4cc34960f9713, type: 2}
+        - {fileID: 7400000, guid: ef0f222b1085f6a468c8a1a96f13841b, type: 2}
+        - {fileID: 7400000, guid: 39aab817b0a47864d9d87fa8a7d95fb6, type: 2}
+        - {fileID: 7400000, guid: 96036edf0be1d4b45910a182497ff0f2, type: 2}
+        _Speeds: []
+        _SynchronizeChildren: 
+        _Thresholds:
+        - {x: 0, y: 0}
+        - {x: 0, y: 1}
+        - {x: 1, y: 0}
+        - {x: 0, y: -1}
+        - {x: -1, y: 0}
+        _DefaultParameter: {x: 0, y: 0}
+        _Type: 1

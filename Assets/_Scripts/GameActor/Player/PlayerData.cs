@@ -1,14 +1,15 @@
 using UnityEngine;
+using Animancer;
 
 namespace SOD
 {
     [CreateAssetMenu(menuName = "SOD/PlayerData")]
     public class PlayerData : ScriptableObject
     {
-        [SerializeField] private AnimationClip idleAnimationClip;
-        [SerializeField] private AnimationClip runAnimationClip;        
+        [SerializeField] private float moveSpeed = 2.0f;
+        [SerializeReference] private ITransition moveAnimationClip;
 
-        public AnimationClip IdleAnimationClip => idleAnimationClip;
-        public AnimationClip RunAnimationClip => runAnimationClip;
+        public ITransition MoveAnimationClip => moveAnimationClip;
+        public float MoveSpeed => moveSpeed;
     }
 }

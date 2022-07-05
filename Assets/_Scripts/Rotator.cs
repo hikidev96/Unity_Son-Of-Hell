@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SOD
 {
@@ -22,6 +23,15 @@ namespace SOD
         {
             var goalRot = GetGoalRot(dir, considerCamera);
             rotatorTrans.rotation = goalRot;
+        }
+
+        public void RotateTowardMouse(bool considerCamera = true)
+        {
+            var mouseViewportPos = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue());
+            var rotatorViewportPos = Camera.main.WorldToViewportPoint(rotatorTrans.position);
+            var dirTowardingMouse = (mouseViewportPos - rotatorViewportPos).normalized;
+
+            RotateDirectly(new Vector3(dirTowardingMouse.x, 0.0f, dirTowardingMouse.y), considerCamera);
         }
 
         private Quaternion GetGoalRot(Vector3 dir, bool considerCamera = false)

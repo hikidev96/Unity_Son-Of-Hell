@@ -18,15 +18,10 @@ namespace SOD
 
         public override void Update()
         {
-            base.Update();            
+            base.Update();
 
-            if (ServiceProvider.InputService.MovementValue == Vector3.zero)
-            {
-                playerStateMachine.ToIdleState();
-                return;
-            }
-
-            player.RotateSmoothly(ServiceProvider.InputService.MovementValue, true);
+            player.RotateTowardMouse();
+            player.ApplyMovementValue();
         }
 
         public override void FixedUpdate()
@@ -41,7 +36,7 @@ namespace SOD
 
         private void PlayMoveAnimation()
         {
-            player.PlayAnimation(player.Data.RunAnimationClip);
+            player.PlayAnimation(player.Data.MoveAnimationClip, player.Data.MoveSpeed);
         }
     }
 }

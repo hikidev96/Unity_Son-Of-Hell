@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 
 namespace SOD
 {
-    public class InputService : MonoBehaviour, InputActions.IMovementActions
+    public class InputService : MonoBehaviour, InputActions.IMovementActions, InputActions.IAttackActions
     {
         private InputActions inputActions;
+        private UnityEvent onNormalAttackKeyPress = new UnityEvent();
         private Vector3 movementValue;
 
+        public UnityEvent OnNormalAttackKeyPress => onNormalAttackKeyPress;
         public Vector3 MovementValue => movementValue;
 
         private void Awake()
@@ -20,26 +22,36 @@ namespace SOD
         private void OnEnable()
         {
             EnableInputActions();
-        }        
+        }
 
         private void EnableInputActions()
         {
             inputActions.Movement.Enable();
+            inputActions.Attack.Enable();
         }
 
         private void SetCallbacks()
         {
             inputActions.Movement.SetCallbacks(this);
+            inputActions.Attack.SetCallbacks(this);
         }
 
-        public void OnHorizontal(InputAction.CallbackContext context)
+        void InputActions.IMovementActions.OnHorizontal(InputAction.CallbackContext context)
         {
             movementValue.x = context.ReadValue<float>();
         }
 
-        public void OnVertical(InputAction.CallbackContext context)
+        void InputActions.IMovementActions.OnVertical(InputAction.CallbackContext context)
         {
             movementValue.z = context.ReadValue<float>();
+        }
+
+        void InputActions.IAttackActions.OnNormalAttack(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                onNormalAttackKeyPress.Invoke();
+            }
         }
     }
 }

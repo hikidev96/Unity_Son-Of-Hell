@@ -6,8 +6,9 @@ namespace SOD
     {
         [SerializeField] private bool showLog;
 
+        protected State currentState;
+
         private State startState;
-        private State currentState;
 
         protected virtual void Awake()
         {

@@ -189,7 +189,7 @@ PrefabInstance:
     - target: {fileID: 4219398849592950057, guid: dd2bdd92eda09e343afcd79010d7f09c,
         type: 3}
       propertyPath: m_Name
-      value: Player_MagicalKnight
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
