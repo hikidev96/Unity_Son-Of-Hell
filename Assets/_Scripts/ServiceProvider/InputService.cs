@@ -12,6 +12,7 @@ namespace SOD
 
         public UnityEvent OnNormalAttackKeyPress => onNormalAttackKeyPress;
         public Vector3 MovementValue => movementValue;
+        public Vector3 MousePositionInWorld => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         private void Awake()
         {
