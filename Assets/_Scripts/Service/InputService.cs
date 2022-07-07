@@ -8,10 +8,12 @@ namespace SOD
     {
         private InputActions inputActions;
         private UnityEvent onNormalAttackKeyPress = new UnityEvent();
+        private UnityEvent onDashKeyPress = new UnityEvent();
         private Vector3 movementValue;
         private bool isNormalAttackKeyPress;
 
         public UnityEvent OnNormalAttackKeyPress => onNormalAttackKeyPress;
+        public UnityEvent OnDashKeyPress => onDashKeyPress;
         public Vector3 MovementValue => movementValue;
         public Vector3 MousePositionInWorld => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         public bool IsNormalAttackKeyPress => isNormalAttackKeyPress;
@@ -59,6 +61,14 @@ namespace SOD
             else if (context.canceled)
             {
                 isNormalAttackKeyPress = false;
+            }
+        }
+
+        void InputActions.IMovementActions.OnDash(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                onDashKeyPress.Invoke();
             }
         }
     }

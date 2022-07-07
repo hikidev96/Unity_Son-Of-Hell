@@ -3,9 +3,11 @@ using UnityEngine;
 namespace SOD
 {
     public class Player : GameActor
-    {        
+    {
         [SerializeField] private Animancer.AnimancerComponent animancer;
         [SerializeField] private PlayerData data;
+        [SerializeField] private NormalAttackController normalAttackController;
+        [SerializeField] private DashController dashController;
 
         private Rotator rotator;
         private PlayerMovementValueController movementValueController;
@@ -20,7 +22,7 @@ namespace SOD
             rotator = new Rotator(this.transform);
             movementValueController = new PlayerMovementValueController(this, animancer);
             animationPlayer = new AnimationPlayer(animancer);
-        }       
+        }
 
         public void RotateSmoothly(Vector3 dir, bool considerCamera = false)
         {
@@ -50,6 +52,16 @@ namespace SOD
         public void ApplyMovementValue()
         {
             movementValueController.ApplyMovementValue();
+        }
+
+        public void TryNormalAttack()
+        {
+            normalAttackController.TryAttack();
+        }
+
+        public void TryDash()
+        {
+            dashController.TryDash();
         }
     }
 }

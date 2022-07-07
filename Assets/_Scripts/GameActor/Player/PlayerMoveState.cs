@@ -6,7 +6,7 @@ namespace SOD
     {
         public PlayerMoveState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
         {
-
+            
         }
 
         public override void Enter()
@@ -14,6 +14,8 @@ namespace SOD
             base.Enter();
 
             PlayMoveAnimation();
+
+            ServiceProvider.InputService.OnDashKeyPress.AddListener(() => player.TryDash());
         }
 
         public override void Update()
@@ -22,6 +24,11 @@ namespace SOD
 
             player.RotateTowardMouse();
             player.ApplyMovementValue();
+
+            if (ServiceProvider.InputService.IsNormalAttackKeyPress == true)
+            {
+                player.TryNormalAttack();
+            }
         }
 
         public override void FixedUpdate()
@@ -32,6 +39,8 @@ namespace SOD
         public override void Exit()
         {
             base.Exit();
+
+            ServiceProvider.InputService.OnDashKeyPress.AddListener(() => player.TryDash());
         }
 
         private void PlayMoveAnimation()
