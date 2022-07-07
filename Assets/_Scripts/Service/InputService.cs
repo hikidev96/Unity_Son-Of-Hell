@@ -9,10 +9,12 @@ namespace SOD
         private InputActions inputActions;
         private UnityEvent onNormalAttackKeyPress = new UnityEvent();
         private Vector3 movementValue;
+        private bool isNormalAttackKeyPress;
 
         public UnityEvent OnNormalAttackKeyPress => onNormalAttackKeyPress;
         public Vector3 MovementValue => movementValue;
         public Vector3 MousePositionInWorld => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        public bool IsNormalAttackKeyPress => isNormalAttackKeyPress;
 
         private void Awake()
         {
@@ -52,6 +54,11 @@ namespace SOD
             if (context.started)
             {
                 onNormalAttackKeyPress.Invoke();
+                isNormalAttackKeyPress = true;
+            }
+            else if (context.canceled)
+            {
+                isNormalAttackKeyPress = false;
             }
         }
     }

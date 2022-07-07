@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace SOD
 {
@@ -11,17 +10,30 @@ namespace SOD
 
         private void Awake()
         {
-            ServiceProvider.InputService.OnNormalAttackKeyPress.AddListener(Attack);
+            
         }
 
         private void OnDestroy()
         {
-            ServiceProvider.InputService.OnNormalAttackKeyPress.RemoveListener(Attack);
+            
         }
 
-        public void Attack()
+        private void Update()
+        {
+            if (ServiceProvider.InputService.IsNormalAttackKeyPress == true)
+            {
+                TryAttack();
+            }            
+        }
+
+        public void TryAttack()
         {            
             if (attack == null)
+            {
+                return;
+            }
+
+            if (attack.IsReadyToFire == false)
             {
                 return;
             }
