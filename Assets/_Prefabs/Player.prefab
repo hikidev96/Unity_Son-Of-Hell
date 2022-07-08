@@ -1014,6 +1014,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: d8dd5615d46b673428fea008bb4329c5, type: 2}
   fireTrans: {fileID: 2285237703515622162}
   attack: {fileID: 2109346997}
+  rightHandIKTarget: {fileID: 5236201761276808399}
+  rightHand: {fileID: 2816741069955048079}
 --- !u!1 &2660542873597047750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1073,7 @@ Transform:
   m_GameObject: {fileID: 2816741069955048079}
   m_LocalRotation: {x: -0.00018953899, y: 0.04719391, z: -0.0023370017, w: 0.998883}
   m_LocalPosition: {x: 5.0640664e-10, y: 0.0015158165, z: -2.3283063e-11}
-  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8305251662509653330}

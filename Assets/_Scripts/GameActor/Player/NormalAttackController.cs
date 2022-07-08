@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace SOD
 {
@@ -7,9 +8,18 @@ namespace SOD
         [SerializeField] private PlayerData playerData;
         [SerializeField] private Transform fireTrans;
         [SerializeField] private NormalAttack attack;
+        [SerializeField] private GameObject rightHandIKTarget;
+        [SerializeField] private GameObject rightHand;
+
+        private Tweener recoilAnimationTweener;
+
+        private void Awake()
+        {
+         
+        }
 
         public void TryAttack()
-        {            
+        {
             if (attack == null)
             {
                 return;
@@ -20,6 +30,19 @@ namespace SOD
                 return;
             }
 
+            Attack();
+            PlayRecoilAnimation();
+        }
+
+        private void PlayRecoilAnimation()
+        {
+            recoilAnimationTweener.ForceInit();
+            recoilAnimationTweener = rightHandIKTarget.transform.DOLocalMoveY(rightHandIKTarget.transform.localPosition.y + 1.0f, 0.02f);
+            recoilAnimationTweener.onComplete = () => rightHandIKTarget.transform.DOLocalMoveY(rightHandIKTarget.transform.localPosition.y - 1.0f, 0.1f);
+        }
+
+        private void Attack()
+        {
             attack.DoAttack(fireTrans);
         }
 
