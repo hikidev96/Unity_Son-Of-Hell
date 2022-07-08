@@ -13,11 +13,6 @@ namespace SOD
 
         private Tweener recoilAnimationTweener;
 
-        private void Awake()
-        {
-         
-        }
-
         public void TryAttack()
         {
             if (attack == null)
