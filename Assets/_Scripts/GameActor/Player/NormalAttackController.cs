@@ -38,6 +38,7 @@ namespace SOD
 
         private void Attack()
         {
+            ServiceProvider.CameraService.Shake(1.0f);
             attack.DoAttack(fireTrans);
         }
 

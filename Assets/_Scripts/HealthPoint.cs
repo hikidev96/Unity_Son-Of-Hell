@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace SOD
 {
@@ -9,37 +8,43 @@ namespace SOD
 
         public DamageData(float damage)
         {
-            this.Damage = damage;   
+            this.Damage = damage;
         }
     }
 
-    public class HealthPoint : MonoBehaviour
+    [System.Serializable]
+    public class HealthPoint
     {
-        [SerializeField] private float maxHP;
-        [SerializeField] private UnityEvent<DamageData> onDamage = new UnityEvent<DamageData>();
-        [SerializeField] private UnityEvent onDie = new UnityEvent();
+        [SerializeField] private float maxHP;        
 
         public float CurrentHP { get; private set; }
-        public UnityEvent<DamageData> OnDamage => onDamage;
-        public UnityEvent OnDie => onDie;
+        public bool IsDead { get; private set; }
 
-        private void Awake()
+        public HealthPoint(float maxHP)
         {
-            CurrentHP = maxHP;
+            this.maxHP = maxHP;
+
+            Init();            
         }
 
-        public void Damage(DamageData damageData)
+        public virtual void Damage(DamageData damageData)
         {
+            if (IsDead == true)
+            {
+                return;
+            }
+
             CurrentHP -= damageData.Damage;
 
             if (CurrentHP <= 0.0f)
             {
-                onDie?.Invoke();
+                IsDead = true;
             }
-            else
-            {
-                onDamage?.Invoke(damageData);
-            }            
+        }
+
+        private void Init()
+        {
+            CurrentHP = maxHP;
         }
     }
 }

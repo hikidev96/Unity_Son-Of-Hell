@@ -50,6 +50,7 @@ namespace SOD
         {
             if (other.gameObject.CompareTag("EnemyHitBox"))
             {
+                other.gameObject.GetComponent<HitBox>().Hit(new HitData(new DamageData(5)));
                 DestrySelf();
             }
         }

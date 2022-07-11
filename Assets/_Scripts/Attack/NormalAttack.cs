@@ -14,7 +14,7 @@ namespace SOD
         virtual public void DoAttack(Transform attackTrans)
         {
             SpawnFireFX(attackTrans);
-            SpawnProjectile(attackTrans);
+            SpawnProjectile(attackTrans);            
             StartCoroutine(WaitForReadyToFire());
         }
 

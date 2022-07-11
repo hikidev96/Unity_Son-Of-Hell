@@ -5,18 +5,17 @@ namespace SOD
     public class CameraService : MonoBehaviour
     {
         private FollowCamera followCamera;
-
-        private void Awake()
+        
+        public void Shake(float power = 2.0f)
         {
-            followCamera = FindObjectOfType<FollowCamera>();
-        }
+            followCamera = GameObject.FindObjectOfType<FollowCamera>();
 
-        public void Shake()
-        {
             if (followCamera == null)
             {
                 return;
             }
+
+            followCamera.Shake(power);
         }
     }
 }

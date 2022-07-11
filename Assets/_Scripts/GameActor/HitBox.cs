@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SOD
 {
@@ -14,9 +15,11 @@ namespace SOD
 
     public class HitBox : MonoBehaviour
     {
+        public UnityEvent<HitData> OnHit { get; private set; } = new UnityEvent<HitData>();
+
         public virtual void Hit(HitData hitData)
         {
-
+            OnHit.Invoke(hitData);
         }
     }
 }
