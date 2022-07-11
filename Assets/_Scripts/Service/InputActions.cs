@@ -140,7 +140,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""89b35766-7755-4ad6-867a-760ce6e94c43"",
             ""actions"": [
                 {
-                    ""name"": ""NormalAttack"",
+                    ""name"": ""HandFire"",
                     ""type"": ""Button"",
                     ""id"": ""81057280-59f5-4477-9c04-f1f30974ab14"",
                     ""expectedControlType"": ""Button"",
@@ -157,7 +157,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NormalAttack"",
+                    ""action"": ""HandFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -173,7 +173,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Movement_Dash = m_Movement.FindAction("Dash", throwIfNotFound: true);
         // Attack
         m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
-        m_Attack_NormalAttack = m_Attack.FindAction("NormalAttack", throwIfNotFound: true);
+        m_Attack_HandFire = m_Attack.FindAction("HandFire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,12 +282,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // Attack
     private readonly InputActionMap m_Attack;
     private IAttackActions m_AttackActionsCallbackInterface;
-    private readonly InputAction m_Attack_NormalAttack;
+    private readonly InputAction m_Attack_HandFire;
     public struct AttackActions
     {
         private @InputActions m_Wrapper;
         public AttackActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @NormalAttack => m_Wrapper.m_Attack_NormalAttack;
+        public InputAction @HandFire => m_Wrapper.m_Attack_HandFire;
         public InputActionMap Get() { return m_Wrapper.m_Attack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,16 +297,16 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_AttackActionsCallbackInterface != null)
             {
-                @NormalAttack.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnNormalAttack;
-                @NormalAttack.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnNormalAttack;
-                @NormalAttack.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnNormalAttack;
+                @HandFire.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnHandFire;
+                @HandFire.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnHandFire;
+                @HandFire.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnHandFire;
             }
             m_Wrapper.m_AttackActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @NormalAttack.started += instance.OnNormalAttack;
-                @NormalAttack.performed += instance.OnNormalAttack;
-                @NormalAttack.canceled += instance.OnNormalAttack;
+                @HandFire.started += instance.OnHandFire;
+                @HandFire.performed += instance.OnHandFire;
+                @HandFire.canceled += instance.OnHandFire;
             }
         }
     }
@@ -319,6 +319,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     }
     public interface IAttackActions
     {
-        void OnNormalAttack(InputAction.CallbackContext context);
+        void OnHandFire(InputAction.CallbackContext context);
     }
 }

@@ -118,7 +118,7 @@
             "id": "89b35766-7755-4ad6-867a-760ce6e94c43",
             "actions": [
                 {
-                    "name": "NormalAttack",
+                    "name": "HandFire",
                     "type": "Button",
                     "id": "81057280-59f5-4477-9c04-f1f30974ab14",
                     "expectedControlType": "Button",
@@ -135,7 +135,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NormalAttack",
+                    "action": "HandFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1663785638533392804}
   - component: {fileID: 1663785638533392805}
   m_Layer: 0
-  m_Name: NormalAttack_Bubble
+  m_Name: Hand_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663785638533392803}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6242976, y: 1.0345341, z: 5.961059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5780d02d07cd42af382456478b214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireFXPrefab: {fileID: 5549622653850014963, guid: d10b4c2977cb0c2429bb333d2d6b23b0,
+  fireRate: 0.2
+  fireFXPrefab: {fileID: 481319818734137620, guid: 632b5072e69264843b7bfe56b2ac4e13,
     type: 3}
-  projectilePrefab: {fileID: 6378609692838472110, guid: 61fd5f1661e0d5149ba36ea0e4d1ec54,
+  projectilePrefab: {fileID: 5267735851572603526, guid: 178719a100af3174193847e27c643a5d,
     type: 3}

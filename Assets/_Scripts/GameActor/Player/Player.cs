@@ -6,7 +6,7 @@ namespace SOD
     {
         [SerializeField] private Animancer.AnimancerComponent animancer;
         [SerializeField] private PlayerData data;
-        [SerializeField] private NormalAttackController normalAttackController;
+        [SerializeField] private HandController normalAttackController;
         [SerializeField] private DashController dashController;
 
         private Rotator rotator;

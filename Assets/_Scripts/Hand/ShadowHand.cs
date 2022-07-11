@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SOD
 {
-    public class ShadowNormalAttack : NormalAttack
+    public class ShadowHand : Hand
     {
         
     }

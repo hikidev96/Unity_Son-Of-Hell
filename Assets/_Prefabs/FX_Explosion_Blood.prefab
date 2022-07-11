@@ -9560,6 +9560,8 @@ GameObject:
   - component: {fileID: 6074128471543763492}
   - component: {fileID: 6074128471558882498}
   - component: {fileID: 6074128471557439646}
+  - component: {fileID: 9146108846822887800}
+  - component: {fileID: 4660040030438550536}
   m_Layer: 0
   m_Name: FX_Explosion_Blood
   m_TagString: Untagged
@@ -9581,7 +9583,7 @@ Transform:
   m_Children:
   - {fileID: 6074128471543716030}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &6074128471558882498
 ParticleSystem:
@@ -14371,3 +14373,44 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &9146108846822887800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074128471543962152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8df7e6afc3cdbc47b47775e28ad9718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
+  onStart: 1
+  onLifeOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4660040030438550536}
+        m_TargetAssemblyTypeName: SOD.SelfDestroyer, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4660040030438550536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074128471543962152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99af070d8c779a9498dff337e76c3513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

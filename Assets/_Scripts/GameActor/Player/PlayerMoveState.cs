@@ -25,7 +25,7 @@ namespace SOD
             player.RotateTowardMouse();
             player.ApplyMovementValue();
 
-            if (ServiceProvider.InputService.IsNormalAttackKeyPress == true)
+            if (ServiceProvider.InputService.IsHandFireKeyPress == true)
             {
                 player.TryNormalAttack();
             }

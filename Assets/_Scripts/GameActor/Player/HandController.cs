@@ -3,11 +3,11 @@ using DG.Tweening;
 
 namespace SOD
 {
-    public class NormalAttackController : MonoBehaviour
+    public class HandController : MonoBehaviour
     {
         [SerializeField] private PlayerData playerData;
         [SerializeField] private Transform fireTrans;
-        [SerializeField] private NormalAttack attack;
+        [SerializeField] private Hand hand;
         [SerializeField] private GameObject rightHandIKTarget;
         [SerializeField] private GameObject rightHand;
 
@@ -15,12 +15,12 @@ namespace SOD
 
         public void TryAttack()
         {
-            if (attack == null)
+            if (hand == null)
             {
                 return;
             }
 
-            if (attack.IsReadyToFire == false)
+            if (hand.IsReadyToFire == false)
             {
                 return;
             }
@@ -39,7 +39,7 @@ namespace SOD
         private void Attack()
         {
             ServiceProvider.CameraService.Shake(1.0f);
-            attack.DoAttack(fireTrans);
+            hand.Fire(fireTrans);
         }
 
         private void OnDrawGizmos()

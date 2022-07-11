@@ -7,16 +7,16 @@ namespace SOD
     public class InputService : MonoBehaviour, InputActions.IMovementActions, InputActions.IAttackActions
     {
         private InputActions inputActions;
-        private UnityEvent onNormalAttackKeyPress = new UnityEvent();
+        private UnityEvent onHandFireKeyPress = new UnityEvent();
         private UnityEvent onDashKeyPress = new UnityEvent();
         private Vector3 movementValue;
-        private bool isNormalAttackKeyPress;
+        private bool isHandFireKeyPress;
 
-        public UnityEvent OnNormalAttackKeyPress => onNormalAttackKeyPress;
+        public UnityEvent OnHandFireKeyPress => onHandFireKeyPress;
         public UnityEvent OnDashKeyPress => onDashKeyPress;
         public Vector3 MovementValue => movementValue;
         public Vector3 MousePositionInWorld => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        public bool IsNormalAttackKeyPress => isNormalAttackKeyPress;
+        public bool IsHandFireKeyPress => isHandFireKeyPress;
 
         private void Awake()
         {
@@ -51,16 +51,16 @@ namespace SOD
             movementValue.z = context.ReadValue<float>();
         }
 
-        void InputActions.IAttackActions.OnNormalAttack(InputAction.CallbackContext context)
+        void InputActions.IAttackActions.OnHandFire(InputAction.CallbackContext context)
         {
             if (context.started)
             {
-                onNormalAttackKeyPress.Invoke();
-                isNormalAttackKeyPress = true;
+                onHandFireKeyPress.Invoke();
+                isHandFireKeyPress = true;
             }
             else if (context.canceled)
             {
-                isNormalAttackKeyPress = false;
+                isHandFireKeyPress = false;
             }
         }
 

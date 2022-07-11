@@ -6,6 +6,7 @@ namespace SOD
     {
         [SerializeField] private EnemyHealthPoint healthPoint;
         [SerializeField] private HitBox hitBox;
+        [SerializeField] private Rigidbody rigidBody;
 
         protected override void Awake()
         {
@@ -16,7 +17,7 @@ namespace SOD
 
         public virtual void Damage(DamageData damageData)
         {
-            healthPoint.Damage(damageData);            
+            healthPoint.Damage(damageData);
         }
     }
 }

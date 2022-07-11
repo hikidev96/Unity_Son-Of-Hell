@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5122276293304632850}
   - component: {fileID: 5027312809059953162}
   - component: {fileID: 5026094159556958312}
+  - component: {fileID: 2506449348554835821}
+  - component: {fileID: 4546191793653607320}
   m_Layer: 0
   m_Name: FX_Explosion_Blood_Round
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5119119882950503754}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5027312809059953162
 ParticleSystem:
@@ -4813,6 +4815,47 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2506449348554835821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116260579837988184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8df7e6afc3cdbc47b47775e28ad9718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
+  onStart: 1
+  onLifeOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4546191793653607320}
+        m_TargetAssemblyTypeName: SOD.SelfDestroyer, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4546191793653607320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116260579837988184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99af070d8c779a9498dff337e76c3513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5116906134724075340
 GameObject:
   m_ObjectHideFlags: 0

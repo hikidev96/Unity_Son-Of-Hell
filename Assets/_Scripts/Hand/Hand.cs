@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SOD
 {
-    public class NormalAttack : MonoBehaviour
+    public class Hand : MonoBehaviour
     {
         [SerializeField] private float fireRate = 0.2f;
         [SerializeField] private GameObject fireFXPrefab;
@@ -11,7 +11,7 @@ namespace SOD
 
         public bool IsReadyToFire { get; private set; } = true;
 
-        virtual public void DoAttack(Transform attackTrans)
+        virtual public void Fire(Transform attackTrans)
         {
             SpawnFireFX(attackTrans);
             SpawnProjectile(attackTrans);            
