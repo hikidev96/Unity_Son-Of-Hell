@@ -26,6 +26,7 @@ namespace SOD
             PlayScaleAnimation();
             PlayOutlineAnimation();
             ServiceProvider.CameraService.Shake();
+            ServiceProvider.UIService.SpawnDamageUI(damageData, enemy.GetActorPart(EActorPart.Top));
         }
 
         private void SpawnDamageFX()
