@@ -14495,6 +14495,7 @@ GameObject:
   - component: {fileID: 9037292545767134398}
   - component: {fileID: 9068637567057665178}
   - component: {fileID: 5426439047454800249}
+  - component: {fileID: -8069907150196029627}
   m_Layer: 0
   m_Name: FX_Explosion_Bubble
   m_TagString: Untagged
@@ -19501,5 +19502,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8df7e6afc3cdbc47b47775e28ad9718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 5
-  onStart: 0
+  lifeTime: 2
+  onStart: 1
+  onLifeOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8069907150196029627}
+        m_TargetAssemblyTypeName: SOD.SelfDestroyer, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-8069907150196029627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956159533283795688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99af070d8c779a9498dff337e76c3513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

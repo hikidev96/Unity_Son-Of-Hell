@@ -12,17 +12,17 @@ namespace SOD
 
         protected virtual void Awake()
         {
-            lifeTimer = GetComponent<GameObjectLifeTimer>();    
+            lifeTimer = GetComponent<GameObjectLifeTimer>();
         }
 
         protected virtual void OnEnable()
         {
-            lifeTimer.OnLifeOver.AddListener(SpawnDestroyFX);
+            lifeTimer.OnLifeOver.AddListener(DestrySelf);
         }
 
         protected virtual void Start()
         {
-            
+
         }
 
         protected virtual void FixedUpdate()
@@ -32,12 +32,26 @@ namespace SOD
 
         protected virtual void OnDisable()
         {
-            lifeTimer.OnLifeOver.RemoveListener(SpawnDestroyFX);
+            lifeTimer.OnLifeOver.RemoveListener(DestrySelf);
+        }
+
+        protected virtual void DestrySelf()
+        {
+            SpawnDestroyFX();
+            Destroy(this.gameObject);
         }
 
         private void SpawnDestroyFX()
         {
             Instantiate(destroyFX, this.transform.position, Quaternion.identity);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("EnemyHitBox"))
+            {
+                DestrySelf();
+            }
         }
     }
 }

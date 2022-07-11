@@ -4688,6 +4688,7 @@ GameObject:
   - component: {fileID: 5267735851567133016}
   - component: {fileID: -2102999675221293322}
   - component: {fileID: -4609875785441200667}
+  - component: {fileID: 8220284925404862862}
   m_Layer: 0
   m_Name: Projectile_Shadow
   m_TagString: Untagged
@@ -4711,7 +4712,7 @@ Transform:
   - {fileID: 5267735851572911332}
   - {fileID: 5267735851572819828}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5267735851558640740
 ParticleSystem:
@@ -9555,7 +9556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8df7e6afc3cdbc47b47775e28ad9718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 2.2
+  lifeTime: 2
   onStart: 1
 --- !u!114 &-4609875785441200667
 MonoBehaviour:
@@ -9571,6 +9572,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyFX: {fileID: 1376127781743262408, guid: 38ac7617af61f0e4c82dbdefd8cb2e78,
     type: 3}
+--- !u!135 &8220284925404862862
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267735851572603526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5267735851572614522
 GameObject:
   m_ObjectHideFlags: 0

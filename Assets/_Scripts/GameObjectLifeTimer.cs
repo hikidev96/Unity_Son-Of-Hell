@@ -9,7 +9,7 @@ namespace SOD
         [SerializeField] private float lifeTime;
         [SerializeField] private bool onStart;
 
-        private UnityEvent onLifeOver = new UnityEvent();
+        [SerializeField] private UnityEvent onLifeOver = new UnityEvent();
 
         public UnityEvent OnLifeOver => onLifeOver;
 
@@ -31,8 +31,6 @@ namespace SOD
             yield return new WaitForSeconds(lifeTime);
 
             onLifeOver?.Invoke();
-
-            Destroy(this.gameObject);
         }
     }
 }
