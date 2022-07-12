@@ -7,12 +7,14 @@ namespace SOD
         [SerializeField] protected GameObject destroyFX;
 
         protected float speed = 5.0f;
+        protected Rigidbody rb;
 
         private GameObjectLifeTimer lifeTimer;
 
         protected virtual void Awake()
         {
             lifeTimer = GetComponent<GameObjectLifeTimer>();
+            rb = GetComponent<Rigidbody>(); 
         }
 
         protected virtual void OnEnable()

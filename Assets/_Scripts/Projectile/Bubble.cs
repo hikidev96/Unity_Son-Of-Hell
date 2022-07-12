@@ -22,7 +22,7 @@ namespace SOD
             speed -= Time.fixedDeltaTime * slowDownSpeed;
             if (speed <= 0.0f)
                 speed = 0.0f;
-            this.transform.Translate(this.transform.forward * speed * Time.fixedDeltaTime, Space.World);
+            rb.MovePosition(rb.position + this.transform.forward * speed * Time.deltaTime);            
         }
     }
 }

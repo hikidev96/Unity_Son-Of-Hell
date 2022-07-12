@@ -13,8 +13,8 @@ namespace SOD
 
         protected override void FixedUpdate()
         {
-            base.FixedUpdate();            
-            this.transform.Translate(this.transform.forward * speed * Time.deltaTime, Space.World);
+            base.FixedUpdate();
+            rb.MovePosition(rb.position + this.transform.forward * speed * Time.deltaTime);            
         }
     }
 }

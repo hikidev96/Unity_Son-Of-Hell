@@ -25,6 +25,7 @@ namespace SOD
             SpawnDamageFX();
             PlayScaleAnimation();
             PlayOutlineAnimation();
+            enemy.AddForce(enemy.transform.forward * -1, 10.0f);
             ServiceProvider.CameraService.Shake();
             ServiceProvider.UIService.SpawnDamageUI(damageData, enemy.GetActorPart(EActorPart.Top));
         }
@@ -41,8 +42,8 @@ namespace SOD
                 scaleAnimationTweener.Kill();
             }
 
-            enemy.transform.localScale = Vector3.one;
-            scaleAnimationTweener = enemy.transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.2f);
+            renderer.transform.localScale = Vector3.one;
+            scaleAnimationTweener = renderer.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f);
         }
 
         private void PlayOutlineAnimation()
