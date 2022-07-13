@@ -1,4 +1,4 @@
-using System.Collections;    
+using System.Collections;
 using UnityEngine;
 using Animancer;
 using Pathfinding;
@@ -15,78 +15,63 @@ namespace SOD
         [SerializeReference] private AnimationClip idleAnimationClip;
         [SerializeReference] private AnimationClip moveAnimationClip;
         [SerializeReference] private AnimationClip attackAnimationClip;
+        [SerializeReference] private AnimationClip deadAnimationClip;
 
         public AnimationClip IdleAnimationClip => idleAnimationClip;
         public AnimationClip MoveAnimationClip => moveAnimationClip;
         public AnimationClip AttackAnimationClip => attackAnimationClip;
+        public AnimationClip DeadAnimationClip => deadAnimationClip;
         public float MoveSpeed => moveSpeed;
         public float AttackSpeed => attackSpeed;
         public float AttackRange => attackRange;
         public float AttackCoolTime => attackCoolTime;
     }
 
-    public class Enemy : GameActor, IDamageable
+    [RequireComponent(typeof(AnimancerComponent))]    
+    public class Enemy : GameActor
     {
         [SerializeField] private EnemyData data;
-        [SerializeField] private AnimancerComponent animancer;
         [SerializeField] private EnemyHealthPoint healthPoint;
-        [SerializeField] private HitBox hitBox;
-        [SerializeField] private Seeker seeker;
-        [SerializeField] private CharacterControllerForcer forcer;
+        [SerializeField] private GameObject destroyFXPrefab;
+        [SerializeField] private EnemyAI ai;
 
-        private Rotator rotator;
-        private AnimationPlayer animationPlayer;
+        private AnimancerComponent animancer;
+        private CharacterControllerForcer forcer;
 
+        public EnemyHealthPoint HealthPoint => healthPoint;
         public EnemyData Data => data;
+        public CharacterControllerForcer Forcer => forcer;
+        public EnemyAI AI => ai;
+        public Animator Animator { get; private set; }
+        public Rotator Rotator { get; private set; }
         public bool IsAttackable { get; private set; } = true;
 
         protected override void Awake()
         {
             base.Awake();
 
-            rotator = new Rotator(this.transform);
-            animationPlayer = new AnimationPlayer(animancer);
-            hitBox.OnHit.AddListener((hitData) => Damage(hitData.DamageData));
-        }
+            animancer = GetComponent<AnimancerComponent>();
+            forcer = GetComponent<CharacterControllerForcer>();
 
-        public virtual void Damage(DamageData damageData)
-        {
-            healthPoint.Damage(damageData);
-        }
-
-        public void RotateSmoothly(Vector3 dir, bool considerCamera = false)
-        {
-            rotator.RotateSmoothly(dir, considerCamera);
-        }
-
-        public void RotateDirectly(Vector3 dir, bool considerCamera = false)
-        {
-            rotator.RotateDirectly(dir, considerCamera);
-        }
-
-        public void RotateTowardMouse(bool considerCamera = true)
-        {
-            rotator.RotateTowardMouse(considerCamera);
-        }
-
-        public void AddForce(Vector3 dir, float power)
-        {
-            forcer.AddForce(dir, power);
-        }
-
-        public AnimancerState PlayAnimation(AnimationClip clip, float speed = 1.0f)
-        {
-            return animationPlayer.Play(clip, speed);
-        }
-
-        public Path StartPath(Vector3 start, Vector3 end, OnPathDelegate callback)
-        {
-            return seeker.StartPath(start, end, callback);
+            healthPoint.Init();
+            Rotator = new Rotator(this.transform);
+            Animator = new Animator(animancer);            
         }
 
         public void StartCountAttackCoolTime()
         {
             StartCoroutine(CountAttackCoolTime());
+        }        
+
+        public void InvokeDestroySelfAfter(float time)
+        {
+            Invoke("DestroySelf", time);
+        }
+
+        public void DestroySelf()
+        {
+            Instantiate(destroyFXPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
+            Destroy(this.gameObject);
         }
 
         private IEnumerator CountAttackCoolTime()

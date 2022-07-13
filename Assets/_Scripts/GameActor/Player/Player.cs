@@ -11,7 +11,7 @@ namespace SOD
 
         private Rotator rotator;
         private PlayerMovementValueController movementValueController;
-        private AnimationPlayer animationPlayer;
+        private Animator animationPlayer;
 
         public PlayerData Data => data;
 
@@ -21,7 +21,7 @@ namespace SOD
 
             rotator = new Rotator(this.transform);
             movementValueController = new PlayerMovementValueController(this, animancer);
-            animationPlayer = new AnimationPlayer(animancer);
+            animationPlayer = new Animator(animancer);
         }
 
         public void RotateSmoothly(Vector3 dir, bool considerCamera = false)

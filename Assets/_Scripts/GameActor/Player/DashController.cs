@@ -8,7 +8,7 @@ namespace SOD
         [SerializeField] private PlayerData playerData;       
         [SerializeField] private CharacterController characterController;
         [SerializeField] private TrailGenerator trailGenerator;
-        [SerializeField] private Animator animator;
+        [SerializeField] private UnityEngine.Animator animator;
         [SerializeField] private float TEMP_dashTime = 0.25f; // should be in playerData
         [SerializeField] private float TEMP_dashSpeed = 50.0f; // should be in playerData        
 

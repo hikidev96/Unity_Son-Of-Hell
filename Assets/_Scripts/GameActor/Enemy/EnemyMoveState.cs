@@ -6,7 +6,6 @@ namespace SOD
 {
     public class EnemyMoveState : EnemyState
     {
-        private Transform targetPosition;
         private Path path;
         private float nextWaypointDistance = 3;
         private int currentWaypoint = 0;
@@ -20,7 +19,7 @@ namespace SOD
         public override void Enter()
         {
             base.Enter();
-            targetPosition = GameObject.FindObjectOfType<Player>().transform;
+
             PlayMoveAnimation();
         }
 
@@ -28,18 +27,45 @@ namespace SOD
         {
             base.Update();
 
-            if (Vector3.Distance(enemy.transform.position, targetPosition.position) <= enemy.Data.AttackRange &&
-                enemy.IsAttackable == true)
+            if (enemy.HealthPoint.IsDead == true)
             {
-                enemyStateMachine.ToAttackState();
-            }
-            else if (Vector3.Distance(enemy.transform.position, targetPosition.position) <= enemy.Data.AttackRange &&
-                enemy.IsAttackable == false)
-            {
-                enemyStateMachine.ToIdleState();
+                enemyStateMachine.ToDeadState();
+                return;
             }
 
-            enemy.StartPath(enemy.transform.position, targetPosition.position, OnPathComplete);
+            if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == true)
+            {
+                if (enemy.IsAttackable == true)
+                {
+                    enemyStateMachine.ToAttackState();
+                }
+                else
+                {
+                    enemyStateMachine.ToIdleState();
+                }
+            }
+
+            MoveToPlayer();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
+
+        private void PlayMoveAnimation()
+        {
+            enemy.Animator.Play(enemy.Data.MoveAnimationClip, enemy.Data.MoveSpeed);
+        }
+
+        private void MoveToPlayer()
+        {
+            enemy.AI.CalculatePath(OnPathComplete);
 
             if (path == null)
             {
@@ -71,27 +97,12 @@ namespace SOD
             }
 
             Vector3 dir = (path.vectorPath[currentWaypoint] - enemy.transform.position).normalized;
-            enemy.RotateSmoothly(dir);
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-        }
-
-        private void PlayMoveAnimation()
-        {
-            enemy.PlayAnimation(enemy.Data.MoveAnimationClip, enemy.Data.MoveSpeed);
+            enemy.Rotator.RotateSmoothly(dir);
         }
 
         private void OnPathComplete(Path p)
         {
-            Debug.Log("A path was calculated. Did it fail with an error? " + p.error);
+            //Debug.Log("A path was calculated. Did it fail with an error? " + p.error);
 
             if (!p.error)
             {

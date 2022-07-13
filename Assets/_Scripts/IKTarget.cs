@@ -10,7 +10,7 @@ namespace SOD
 
         /************************************************************************************************************************/
 
-        public void UpdateAnimatorIK(Animator animator)
+        public void UpdateAnimatorIK(UnityEngine.Animator animator)
         {
             animator.SetIKPositionWeight(_Type, _PositionWeight);
             animator.SetIKRotationWeight(_Type, _RotationWeight);

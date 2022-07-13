@@ -9,6 +9,7 @@ namespace SOD
         private EnemyIdleState idleState;
         private EnemyMoveState moveState;
         private EnemyAttackState attackState;
+        private EnemyDeadState deadState;
 
         protected override void Awake()
         {
@@ -17,6 +18,7 @@ namespace SOD
             idleState = new EnemyIdleState(enemy, this);
             moveState = new EnemyMoveState(enemy, this);
             attackState = new EnemyAttackState(enemy, this);
+            deadState = new EnemyDeadState(enemy, this);
 
             SetStartState(idleState);
         }
@@ -34,6 +36,11 @@ namespace SOD
         public void ToAttackState()
         {
             ChangeState(attackState);
+        }
+
+        public void ToDeadState()
+        {
+            ChangeState(deadState);
         }
     }
 }

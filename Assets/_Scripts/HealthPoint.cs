@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 namespace SOD
 {
@@ -15,17 +17,11 @@ namespace SOD
     [System.Serializable]
     public class HealthPoint
     {
-        [SerializeField] private float maxHP;        
+        [SerializeField] private float maxHP;
 
+        public UnityEvent OnDie { get; private set; } = new UnityEvent();
         public float CurrentHP { get; private set; }
         public bool IsDead { get; private set; }
-
-        public HealthPoint(float maxHP)
-        {
-            this.maxHP = maxHP;
-
-            Init();            
-        }
 
         public virtual void Damage(DamageData damageData)
         {
@@ -39,11 +35,13 @@ namespace SOD
             if (CurrentHP <= 0.0f)
             {
                 IsDead = true;
+                OnDie.Invoke();
             }
         }
 
-        private void Init()
+        public virtual void Init()
         {
+            OnDie = new UnityEvent();
             CurrentHP = maxHP;
         }
     }

@@ -3,11 +3,11 @@ using Animancer;
 
 namespace SOD
 {
-    public class AnimationPlayer
+    public class Animator
     {
         private AnimancerComponent animancer;
 
-        public AnimationPlayer(AnimancerComponent animancer)
+        public Animator(AnimancerComponent animancer)
         {
             this.animancer = animancer;
         }

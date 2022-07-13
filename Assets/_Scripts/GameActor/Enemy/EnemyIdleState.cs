@@ -8,13 +8,13 @@ namespace SOD
 
         public EnemyIdleState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
         {
-
+            
         }
 
         public override void Enter()
         {
             base.Enter();
-            targetPosition = GameObject.FindObjectOfType<Player>().transform;
+            targetPosition = GameObject.FindObjectOfType<Player>().transform;               
             PlayIdleAnimation();
         }
 
@@ -22,12 +22,17 @@ namespace SOD
         {
             base.Update();
 
-            if (Vector3.Distance(enemy.transform.position, targetPosition.position) > enemy.Data.AttackRange)
+            if (enemy.HealthPoint.IsDead == true)
+            {
+                enemyStateMachine.ToDeadState();
+                return;
+            }
+
+            if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == false)
             {
                 enemyStateMachine.ToMoveState();
             }
-            else if (Vector3.Distance(enemy.transform.position, targetPosition.position) <= enemy.Data.AttackRange &&
-                    enemy.IsAttackable == true)
+            else if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == true && enemy.IsAttackable == true)
             {
                 enemyStateMachine.ToAttackState();
             }
@@ -45,7 +50,7 @@ namespace SOD
 
         private void PlayIdleAnimation()
         {
-            var animationState = enemy.PlayAnimation(enemy.Data.IdleAnimationClip);
+            enemy.Animator.Play(enemy.Data.IdleAnimationClip);
         }
     }
 }

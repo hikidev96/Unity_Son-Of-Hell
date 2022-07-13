@@ -6,7 +6,7 @@ namespace SOD
     {
         public EnemyAttackState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
         {
-
+            
         }
 
         public override void Enter()
@@ -20,6 +20,12 @@ namespace SOD
         public override void Update()
         {
             base.Update();
+
+            if (enemy.HealthPoint.IsDead == true)
+            {
+                enemyStateMachine.ToDeadState();
+                return;
+            }
         }
 
         public override void FixedUpdate()
@@ -34,7 +40,7 @@ namespace SOD
 
         private void PlayAttackAnimation()
         {
-            var animationState = enemy.PlayAnimation(enemy.Data.AttackAnimationClip, enemy.Data.AttackSpeed);
+            var animationState = enemy.Animator.Play(enemy.Data.AttackAnimationClip, enemy.Data.AttackSpeed);
             animationState.Events.OnEnd = () => enemyStateMachine.ToIdleState();
         }
     }

@@ -9,23 +9,31 @@ namespace SOD
         [SerializeField] private Enemy enemy;
         [SerializeField] private PrefabSet damageFXPrefabs;
         [SerializeField] private Renderer renderer;
+        [SerializeField] private HitBox hitbox;
 
         private Tweener scaleAnimationTweener;
         private Tweener colorAnimationTweener;
 
-        public EnemyHealthPoint(Enemy enemy, float maxHP) : base(maxHP)
+        public override void Init()
         {
+            base.Init();
 
+            hitbox.OnHit.AddListener((hitData) => Damage(hitData.DamageData));
         }
 
         public override void Damage(DamageData damageData)
         {
+            if (IsDead == true)
+            {
+                return;
+            }
+
             base.Damage(damageData);
 
             SpawnDamageFX();
             PlayScaleAnimation();
             PlayOutlineAnimation();
-            enemy.AddForce(enemy.transform.forward * -1, 10.0f);
+            enemy.Forcer.AddForce(enemy.transform.forward * -1, 10.0f);
             ServiceProvider.CameraService.Shake();
             ServiceProvider.UIService.SpawnDamageUI(damageData, enemy.GetActorPart(EActorPart.Top));
         }
@@ -56,6 +64,11 @@ namespace SOD
             renderer.material.SetColor("_MainColor", Color.red);
             colorAnimationTweener = DOTween.To(() => renderer.material.GetColor("_MainColor"), (x) => renderer.material.SetColor("_MainColor", x), Color
                 .white, 0.5f);
+        }
+
+        public void DisableHitBox()
+        {
+            hitbox.gameObject.SetActive(false);
         }
     }
 }
