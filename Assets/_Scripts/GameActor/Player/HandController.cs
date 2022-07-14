@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace SOD
 {
@@ -7,11 +8,13 @@ namespace SOD
     {
         [SerializeField] private PlayerData playerData;
         [SerializeField] private Transform fireTrans;
-        [SerializeField] private Hand hand;
         [SerializeField] private GameObject rightHandIKTarget;
         [SerializeField] private GameObject rightHand;
 
+        private Hand hand;
         private Tweener recoilAnimationTweener;
+
+        public Hand Hand => hand;
 
         public void TryAttack()
         {
@@ -27,6 +30,18 @@ namespace SOD
 
             Attack();
             PlayRecoilAnimation();
+        }
+
+        [Button]
+        public void SetHandPrefab(GameObject handPrefab)
+        {
+            var hand = Instantiate(handPrefab, this.transform).GetComponent<Hand>();
+            SetHand(hand);  
+        }
+
+        private void SetHand(Hand hand)
+        {
+            this.hand = hand;
         }
 
         private void PlayRecoilAnimation()

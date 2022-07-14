@@ -9,6 +9,8 @@ namespace SOD
         private Seeker seeker;
         private Player player;
 
+        public Player Player => player;
+
         private void Awake()
         {
             player = FindObjectOfType<Player>();

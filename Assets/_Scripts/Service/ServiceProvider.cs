@@ -8,6 +8,7 @@ namespace SOD
         public static CameraService CameraService;
         public static UIService UIService;
         public static AudioService AudioService;
+        public static GameService GameService;
 
         private void Awake()
         {
@@ -15,6 +16,7 @@ namespace SOD
             CameraService = FindObjectOfType<CameraService>();
             UIService = FindObjectOfType<UIService>();
             AudioService = FindObjectOfType<AudioService>();    
+            GameService = FindObjectOfType<GameService>();
         }
     }
 }

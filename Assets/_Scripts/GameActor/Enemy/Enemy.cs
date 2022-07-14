@@ -58,6 +58,11 @@ namespace SOD
             Animator = new Animator(animancer);            
         }
 
+        public void GivePlayerEXP()
+        {
+            ai.Player.Hand.AddEXP(5.0f);
+        }
+
         public void StartCountAttackCoolTime()
         {
             StartCoroutine(CountAttackCoolTime());
@@ -69,7 +74,7 @@ namespace SOD
         }
 
         public void DestroySelf()
-        {
+        {            
             Instantiate(destroyFXPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
             Destroy(this.gameObject);
         }

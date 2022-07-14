@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-namespace SOD
+namespace SOD.UI
 {
     public class DamageUI : MonoBehaviour
     {

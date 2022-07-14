@@ -6,7 +6,7 @@ namespace SOD
     {
         [SerializeField] private Animancer.AnimancerComponent animancer;
         [SerializeField] private PlayerData data;
-        [SerializeField] private HandController normalAttackController;
+        [SerializeField] private HandController handController;
         [SerializeField] private DashController dashController;
 
         private Rotator rotator;
@@ -14,6 +14,7 @@ namespace SOD
         private Animator animationPlayer;
 
         public PlayerData Data => data;
+        public Hand Hand => handController.Hand;
 
         protected override void Awake()
         {
@@ -56,7 +57,7 @@ namespace SOD
 
         public void TryNormalAttack()
         {
-            normalAttackController.TryAttack();
+            handController.TryAttack();
         }
 
         public void TryDash()
