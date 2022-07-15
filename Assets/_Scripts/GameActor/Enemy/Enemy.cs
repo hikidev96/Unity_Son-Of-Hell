@@ -60,7 +60,7 @@ namespace SOD
 
         public void GivePlayerEXP()
         {
-            ai.Player.Hand.AddEXP(5.0f);
+            ai.Player.HandController.Hand.AddEXP(5.0f);
         }
 
         public void StartCountAttackCoolTime()

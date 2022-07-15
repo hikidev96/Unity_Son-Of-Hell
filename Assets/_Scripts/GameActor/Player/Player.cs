@@ -13,8 +13,8 @@ namespace SOD
         private PlayerMovementValueController movementValueController;
         private Animator animationPlayer;
 
-        public PlayerData Data => data;
-        public Hand Hand => handController.Hand;
+        public PlayerData Data => data;        
+        public HandController HandController => handController;
 
         protected override void Awake()
         {

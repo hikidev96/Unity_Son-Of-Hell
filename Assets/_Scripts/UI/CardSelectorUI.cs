@@ -4,12 +4,12 @@ namespace SOD
 {
     public class CardSelectorUI : MonoBehaviour
     {
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             ServiceProvider.GameService.Pause();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             ServiceProvider.GameService.Unpause();
         }
