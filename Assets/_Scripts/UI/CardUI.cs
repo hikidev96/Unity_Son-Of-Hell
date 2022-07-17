@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-namespace SOD
+namespace SOD.UI
 {
-    public class CardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class CardUI : UIBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
+        public UnityEvent OnSelected { get; private set; } = new UnityEvent();
+
         virtual public void OnPointerClick(PointerEventData eventData)
         {
-
+            OnSelected.Invoke();
         }
 
         virtual public void OnPointerEnter(PointerEventData eventData)

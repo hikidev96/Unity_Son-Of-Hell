@@ -2,6 +2,9 @@
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+#pragma warning disable CS0618
+#pragma warning disable CS0108
+
 namespace RealToon.Effects
 {
 

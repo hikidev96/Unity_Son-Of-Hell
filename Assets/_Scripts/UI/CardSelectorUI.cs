@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace SOD
+namespace SOD.UI
 {
-    public class CardSelectorUI : MonoBehaviour
+    public class CardSelectorUI : UIBehaviour
     {
         protected virtual void OnEnable()
         {

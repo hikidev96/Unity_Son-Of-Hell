@@ -2,14 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-namespace SOD
+namespace SOD.UI
 {
     public class HandCardUI : CardUI
     {
         [SerializeField] private TextMeshProUGUI handNameTextMesh;
         [SerializeField] private TextMeshProUGUI handDescriptionTextMesh;
 
-        private HandData handData;
+        private HandData handData;        
 
         public void SetHandData(HandData handData)
         {
@@ -21,8 +21,6 @@ namespace SOD
         public override void OnPointerClick(PointerEventData eventData)
         {
             base.OnPointerClick(eventData);
-
-            ServiceProvider.UIService.CloseCardSelector();
 
             var player = FindObjectOfType<Player>();
             player.HandController.SetHandPrefab(handData.HandPrefab);

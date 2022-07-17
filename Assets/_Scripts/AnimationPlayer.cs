@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SOD
 {
     public class AnimationPlayer : MonoBehaviour
-    {        
+    {
         [SerializeField] private AnimationClip clip;
         [SerializeField] private bool onStart;
+        [SerializeField] private bool destroyWhenAnimationEnd;
 
         private Animator animator;
         private Animancer.AnimancerComponent animancer;
@@ -22,7 +21,19 @@ namespace SOD
         {
             if (onStart == true)
             {
-                animator.Play(clip);
+                Play();
+            }
+        }
+
+        public void Play(float speed = 1.0f)
+        {
+            Animancer.AnimancerState animationState = null;
+
+            animationState = animator.Play(clip, speed);
+
+            if (destroyWhenAnimationEnd == true)
+            {
+                animationState.Events.OnEnd = () => Destroy(this.gameObject);
             }
         }
     }

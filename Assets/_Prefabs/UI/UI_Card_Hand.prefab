@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8294217202032748446}
   - component: {fileID: 6974802130990605416}
+  - component: {fileID: 5277848250033308653}
   - component: {fileID: 9045103791541157214}
   - component: {fileID: 8294217202032748447}
   m_Layer: 5
@@ -260,6 +261,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8294217202032748445}
   m_CullTransparentMesh: 1
+--- !u!225 &5277848250033308653
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294217202032748445}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &9045103791541157214
 MonoBehaviour:
   m_ObjectHideFlags: 0

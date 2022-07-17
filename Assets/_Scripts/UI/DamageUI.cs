@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace SOD.UI
 {
-    public class DamageUI : MonoBehaviour
+    public class DamageUI : UIBehaviour
     {
         [SerializeField] private TextMeshProUGUI textMesh;
 
