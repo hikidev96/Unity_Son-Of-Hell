@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39528628374063930}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &39528628079791521
 MonoBehaviour:
@@ -123,7 +123,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39528628374063930}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3807292662840538611
 MonoBehaviour:
@@ -167,7 +167,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39528628374063930}
-  m_RootOrder: -1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5902358371084313821
 MonoBehaviour:
@@ -211,7 +211,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39528628374063930}
-  m_RootOrder: -1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2374230984461172765
 MonoBehaviour:
@@ -229,6 +229,17 @@ MonoBehaviour:
     type: 3}
   CardSelectorUIPrefab: {fileID: 6003777269591635012, guid: 09382f5897d43a348ba92351a1385b59,
     type: 3}
+  liquidPrefabs:
+  - {fileID: 130297846589906263, guid: 5cc50d2923e365e4280c9cd94ed3bad6, type: 3}
+  - {fileID: 130297846589906263, guid: 0cd55cd43754a6244aa5bb91dc218320, type: 3}
+  - {fileID: 130297846589906263, guid: 6dadcfba63e173c42b3c9a2793cda7bf, type: 3}
+  - {fileID: 130297846589906263, guid: 9b0f36ccab21e6b41866904304880350, type: 3}
+  - {fileID: 130297846589906263, guid: 5954601447d20b34986ae90aa2035767, type: 3}
+  - {fileID: 130297846589906263, guid: 5eed4064f8b0a0440bd09d87fd23720c, type: 3}
+  - {fileID: 130297846589906263, guid: e0ea57d31e82a6a409f3eefa858d9224, type: 3}
+  - {fileID: 130297846589906263, guid: 73f2e4e960c3ede4fa91ca75364227ec, type: 3}
+  - {fileID: 130297846589906263, guid: 2d53c885f34500d4583ce5cb0259eb1c, type: 3}
+  - {fileID: 130297846589906263, guid: 30f09c2a029a05140a45c6e45ce7c1aa, type: 3}
 --- !u!1 &6420674546471420311
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39528628374063930}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2450240061354203833
 MonoBehaviour:

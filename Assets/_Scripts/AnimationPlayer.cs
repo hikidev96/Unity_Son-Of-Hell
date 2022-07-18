@@ -11,12 +11,6 @@ namespace SOD
         private Animator animator;
         private Animancer.AnimancerComponent animancer;
 
-        private void Awake()
-        {
-            animancer = GetComponent<Animancer.AnimancerComponent>();
-            animator = new Animator(animancer);
-        }
-
         private void Start()
         {
             if (onStart == true)
@@ -27,6 +21,11 @@ namespace SOD
 
         public void Play(float speed = 1.0f)
         {
+            animancer = GetComponent<Animancer.AnimancerComponent>();
+
+            if (animator == null)
+                animator = new Animator(animancer);
+
             Animancer.AnimancerState animationState = null;
 
             animationState = animator.Play(clip, speed);
