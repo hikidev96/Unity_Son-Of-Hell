@@ -162,6 +162,34 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interaction"",
+            ""id"": ""d02c1fb5-3997-42bb-ac94-3c487285f691"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d2d6daa-ed61-4301-bbf5-9f1e7a56423a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0cc1579f-d6d4-426d-9385-89bac7f7c529"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -174,6 +202,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // Attack
         m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
         m_Attack_HandFire = m_Attack.FindAction("HandFire", throwIfNotFound: true);
+        // Interaction
+        m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
+        m_Interaction_Interact = m_Interaction.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -311,6 +342,39 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         }
     }
     public AttackActions @Attack => new AttackActions(this);
+
+    // Interaction
+    private readonly InputActionMap m_Interaction;
+    private IInteractionActions m_InteractionActionsCallbackInterface;
+    private readonly InputAction m_Interaction_Interact;
+    public struct InteractionActions
+    {
+        private @InputActions m_Wrapper;
+        public InteractionActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Interaction_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Interaction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractionActions instance)
+        {
+            if (m_Wrapper.m_InteractionActionsCallbackInterface != null)
+            {
+                @Interact.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnInteract;
+            }
+            m_Wrapper.m_InteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+            }
+        }
+    }
+    public InteractionActions @Interaction => new InteractionActions(this);
     public interface IMovementActions
     {
         void OnHorizontal(InputAction.CallbackContext context);
@@ -320,5 +384,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     public interface IAttackActions
     {
         void OnHandFire(InputAction.CallbackContext context);
+    }
+    public interface IInteractionActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

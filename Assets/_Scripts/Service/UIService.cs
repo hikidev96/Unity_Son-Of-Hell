@@ -6,10 +6,12 @@ namespace SOD
 {
     public class UIService : MonoBehaviour
     {
+        [SerializeField] private GameObject interactionUIPrefab;
         [SerializeField] private GameObject DamageUIPrefab;
         [SerializeField] private GameObject CardSelectorUIPrefab;
 
         private GameObject CardSelectorUIObj;
+        private GameObject interactionUIObj;
 
         public void SpawnDamageUI(DamageData damageData, Vector3 position)
         {
@@ -17,6 +19,27 @@ namespace SOD
             var damageUI = damageUIObj.GetComponent<UI.DamageUI>();
 
             damageUI.SetDamageData(damageData);
+        }
+
+        public void ShowInteractionUI(Vector3 pos)
+        {
+            if (interactionUIObj == null)
+            {
+                interactionUIObj = Instantiate(interactionUIPrefab);
+            }
+
+            interactionUIObj.SetActive(true);
+            interactionUIObj.transform.position = pos;
+        }
+
+        public void HideInteractionUI()
+        {
+            if (interactionUIObj == null)
+            {
+                return;
+            }
+
+            interactionUIObj.SetActive(false);
         }
         
         [Button]

@@ -6,6 +6,12 @@ namespace SOD
     public class Orb : MonoBehaviour
     {
         [SerializeField] private GameObject destryFXPrefab;
+        [SerializeField] private Interaction interaction;
+
+        private void Awake()
+        {
+            interaction.OnInteract.AddListener(Activate);
+        }
 
         [Button]
         public virtual void Activate()

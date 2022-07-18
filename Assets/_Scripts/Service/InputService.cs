@@ -4,16 +4,18 @@ using UnityEngine.InputSystem;
 
 namespace SOD
 {
-    public class InputService : MonoBehaviour, InputActions.IMovementActions, InputActions.IAttackActions
+    public class InputService : MonoBehaviour, InputActions.IMovementActions, InputActions.IAttackActions, InputActions.IInteractionActions
     {
         private InputActions inputActions;
         private UnityEvent onHandFireKeyPress = new UnityEvent();
         private UnityEvent onDashKeyPress = new UnityEvent();
+        private UnityEvent onInteractKeyPress = new UnityEvent();
         private Vector3 movementValue;
         private bool isHandFireKeyPress;
 
         public UnityEvent OnHandFireKeyPress => onHandFireKeyPress;
         public UnityEvent OnDashKeyPress => onDashKeyPress;
+        public UnityEvent OnInteractKeyPress => onInteractKeyPress;
         public Vector3 MovementValue => movementValue;
         public Vector3 MousePositionInWorld => Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         public bool IsHandFireKeyPress => isHandFireKeyPress;
@@ -33,12 +35,14 @@ namespace SOD
         {
             inputActions.Movement.Enable();
             inputActions.Attack.Enable();
+            inputActions.Interaction.Enable();
         }
 
         private void SetCallbacks()
         {
             inputActions.Movement.SetCallbacks(this);
             inputActions.Attack.SetCallbacks(this);
+            inputActions.Interaction.SetCallbacks(this);
         }
 
         void InputActions.IMovementActions.OnHorizontal(InputAction.CallbackContext context)
@@ -69,6 +73,14 @@ namespace SOD
             if (context.started)
             {
                 onDashKeyPress.Invoke();
+            }
+        }
+
+        void InputActions.IInteractionActions.OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                onInteractKeyPress.Invoke();
             }
         }
     }
