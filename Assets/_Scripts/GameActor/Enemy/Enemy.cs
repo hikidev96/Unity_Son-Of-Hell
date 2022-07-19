@@ -59,11 +59,6 @@ namespace SOD
             Animator = new Animator(animancer);            
         }
 
-        public void GivePlayerEXP()
-        {
-            ai.Player.HandController.Hand.AddEXP(5.0f);
-        }
-
         public void StartCountAttackCoolTime()
         {
             StartCoroutine(CountAttackCoolTime());
@@ -75,9 +70,9 @@ namespace SOD
         }
 
         public void DestroySelf()
-        {            
-            Instantiate(destroyFXPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
-            Instantiate(expOrbPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
+        {
+            SpawnDestroyFX();
+            SpawnExpOrb();
             Destroy(this.gameObject);
         }
 
@@ -88,6 +83,17 @@ namespace SOD
             yield return new WaitForSeconds(data.AttackCoolTime);
 
             IsAttackable = true;
+        }
+
+        private void SpawnDestroyFX()
+        {
+            Instantiate(destroyFXPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
+        }
+
+        private void SpawnExpOrb()
+        {
+            var expOrb = Instantiate(expOrbPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity).GetComponent<ExpOrb>();
+            expOrb.ExpAmount = 3.0f;
         }
 
         protected override void OnDrawGizmos()

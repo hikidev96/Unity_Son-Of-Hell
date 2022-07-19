@@ -8,6 +8,7 @@ namespace SOD
         [SerializeField] private PlayerData data;
         [SerializeField] private HandController handController;
         [SerializeField] private DashController dashController;
+        [SerializeField] private ExpBehaviour expBehaviour;
 
         private Rotator rotator;
         private PlayerMovementValueController movementValueController;
@@ -15,6 +16,7 @@ namespace SOD
 
         public PlayerData Data => data;        
         public HandController HandController => handController;
+        public ExpBehaviour ExpBehaviour => expBehaviour;    
 
         protected override void Awake()
         {

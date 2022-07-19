@@ -10,33 +10,13 @@ namespace SOD
         [SerializeField] private GameObject fireFXPrefab;
         [SerializeField] private GameObject projectilePrefab;
 
-        public int Level { get; private set; } = 1;
-        public float Exp { get; private set; }
-        public float GoalExp { get; private set; } = 50.0f;
         public bool IsReadyToFire { get; private set; } = true;
-        
-        [Button]
-        public void AddEXP(float amountToAdd)
-        {
-            Exp += amountToAdd;
-
-            if (Exp >= GoalExp)
-            {
-                LevelUp();                
-                Exp = 0.0f;
-            }
-        }
 
         virtual public void Fire(Transform attackTrans)
         {
             SpawnFireFX(attackTrans);
             SpawnProjectile(attackTrans);
             StartCoroutine(WaitForReadyToFire());
-        }
-
-        virtual protected void LevelUp()
-        {
-            Debug.Log("Level UP!");
         }
 
         private void SpawnFireFX(Transform spawnTrans)
