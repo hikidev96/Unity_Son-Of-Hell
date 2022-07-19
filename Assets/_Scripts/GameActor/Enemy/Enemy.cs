@@ -34,6 +34,7 @@ namespace SOD
         [SerializeField] private EnemyHealthPoint healthPoint;
         [SerializeField] private GameObject destroyFXPrefab;
         [SerializeField] private EnemyAI ai;
+        [SerializeField] private GameObject expOrbPrefab;
 
         private AnimancerComponent animancer;
         private CharacterControllerForcer forcer;
@@ -76,6 +77,7 @@ namespace SOD
         public void DestroySelf()
         {            
             Instantiate(destroyFXPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
+            Instantiate(expOrbPrefab, GetActorPart(EActorPart.Middle), Quaternion.identity);
             Destroy(this.gameObject);
         }
 

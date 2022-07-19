@@ -9,6 +9,7 @@ namespace SOD
         public static UIService UIService;
         public static AudioService AudioService;
         public static GameService GameService;
+        public static UnitService UnitService;
 
         private void Awake()
         {
@@ -17,6 +18,7 @@ namespace SOD
             UIService = FindObjectOfType<UIService>();
             AudioService = FindObjectOfType<AudioService>();    
             GameService = FindObjectOfType<GameService>();
+            UnitService = FindObjectOfType<UnitService>();  
         }
     }
 }
