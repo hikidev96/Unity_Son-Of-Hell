@@ -276,6 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionUIPrefab: {fileID: 6248644358315096180, guid: a3de0a980419a3648a22fb122e5f6d7e,
     type: 3}
+  gameOverUIPrefab: {fileID: 1175826302769595097, guid: 5af68b6acb820a3409a95765076c8bf9,
+    type: 3}
   DamageUIPrefab: {fileID: 3241171542733054743, guid: 92d07c0b0dbc2ba46b067a2e8b27380d,
     type: 3}
   CardSelectorUIPrefab: {fileID: 6003777269591635012, guid: 09382f5897d43a348ba92351a1385b59,

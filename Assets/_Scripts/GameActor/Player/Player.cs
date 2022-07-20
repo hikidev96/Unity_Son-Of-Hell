@@ -17,7 +17,8 @@ namespace SOD
 
         public PlayerData Data => data;        
         public HandController HandController => handController;
-        public ExpBehaviour ExpBehaviour => expBehaviour;    
+        public ExpBehaviour ExpBehaviour => expBehaviour;   
+        public HealthPoint HealthPoint => healthPoint;  
 
         protected override void Awake()
         {

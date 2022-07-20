@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -7,6 +6,7 @@ namespace SOD
     public class UIService : MonoBehaviour
     {
         [SerializeField] private GameObject interactionUIPrefab;
+        [SerializeField] private GameObject gameOverUIPrefab;
         [SerializeField] private GameObject DamageUIPrefab;
         [SerializeField] private GameObject CardSelectorUIPrefab;
 
@@ -19,6 +19,11 @@ namespace SOD
             var damageUI = damageUIObj.GetComponent<UI.DamageUI>();
 
             damageUI.SetDamageData(damageData);
+        }
+
+        public void ShowGameOverUI()
+        {
+            Instantiate(gameOverUIPrefab);
         }
 
         public void ShowInteractionUI(Vector3 pos)

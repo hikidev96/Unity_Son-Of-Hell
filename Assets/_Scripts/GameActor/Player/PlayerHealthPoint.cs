@@ -22,15 +22,9 @@ namespace SOD
 
         public override void Damage(DamageData damageData)
         {
-            if (IsDead == true)
+            if (healthPointData.IsDead == true)
             {
                 return;
-            }
-
-            if (healthPointData.CurrentHp <= 0.0f)
-            {
-                healthPointData.IsDead = true;
-                OnDie.Invoke();
             }
 
             healthPointData.CurrentHp -= damageData.Damage;
@@ -38,6 +32,13 @@ namespace SOD
             ServiceProvider.CameraService.Damage();
             ServiceProvider.CameraService.Shake();
             ServiceProvider.UIService.SpawnDamageUI(damageData, player.GetActorPart(EActorPart.Top));
+
+            if (healthPointData.CurrentHp <= 0.0f)
+            {
+                healthPointData.IsDead = true;
+                healthPointData.CurrentHp = 0.0f;
+                OnDie.Invoke();
+            }
         }
 
         private void PlayOutlineAnimation()

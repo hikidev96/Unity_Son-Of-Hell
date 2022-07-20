@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  deadAnimationClip: {fileID: 7400000, guid: 8fbcd7ee48da7264a95e5edd17672a4e, type: 2}
   moveAnimationClip:
     rid: 2734869267371261964
   references:

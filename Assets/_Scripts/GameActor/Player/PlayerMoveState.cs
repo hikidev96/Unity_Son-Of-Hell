@@ -16,6 +16,7 @@ namespace SOD
             PlayMoveAnimation();
 
             ServiceProvider.InputService.OnDashKeyPress.AddListener(() => player.TryDash());
+            player.HealthPoint.OnDie.AddListener(() => playerStateMachine.ToDeadState(this));
         }
 
         public override void Update()
@@ -39,8 +40,6 @@ namespace SOD
         public override void Exit()
         {
             base.Exit();
-
-            ServiceProvider.InputService.OnDashKeyPress.AddListener(() => player.TryDash());
         }
 
         private void PlayMoveAnimation()

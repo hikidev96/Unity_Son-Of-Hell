@@ -53,7 +53,7 @@ namespace SOD
             {
                 if (overlappedCollider.CompareTag("PlayerHitBox") == true)
                 {
-                    overlappedCollider.GetComponent<HitBox>().Hit(new HitData(new DamageData(3.0f)));
+                    overlappedCollider.GetComponent<HitBox>().Hit(new HitData(new DamageData(100.0f)));
                 }
             }
         }

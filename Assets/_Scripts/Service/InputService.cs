@@ -31,6 +31,21 @@ namespace SOD
             EnableInputActions();
         }
 
+        public void DisableMovementInput()
+        {
+            inputActions.Movement.Disable();
+        }
+
+        public void DisableAttackInput()
+        {
+            inputActions.Attack.Disable();
+        }
+
+        public void DisableInteractionInput()
+        {
+            inputActions.Interaction.Disable();
+        }
+
         private void EnableInputActions()
         {
             inputActions.Movement.Enable();
