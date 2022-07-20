@@ -42,6 +42,20 @@ namespace SOD
         {
             var animationState = enemy.Animator.Play(enemy.Data.AttackAnimationClip, enemy.Data.AttackSpeed);
             animationState.Events.OnEnd = () => enemyStateMachine.ToIdleState();
+            animationState.Events.Add(0.3f, DamageToTarget);
+        }
+        
+        private void DamageToTarget()
+        {
+            var overlappedColliders = Physics.OverlapSphere(enemy.AttackTrans.position, 1.0f);
+
+            foreach (var overlappedCollider in overlappedColliders)
+            {
+                if (overlappedCollider.CompareTag("PlayerHitBox") == true)
+                {
+                    overlappedCollider.GetComponent<HitBox>().Hit(new HitData(new DamageData(3.0f)));
+                }
+            }
         }
     }
 }

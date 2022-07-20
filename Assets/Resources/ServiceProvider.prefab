@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf7d5d267ccf5c4f8224b919f3ea779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalVolumeProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823,
+    type: 2}
 --- !u!1 &299517102032434237
 GameObject:
   m_ObjectHideFlags: 0

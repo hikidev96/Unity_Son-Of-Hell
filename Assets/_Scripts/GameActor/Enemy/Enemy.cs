@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using Animancer;
-using Pathfinding;
 
 namespace SOD
 {
@@ -12,6 +11,8 @@ namespace SOD
         [SerializeField] private float attackRange = 1.0f;
         [SerializeField] private float attackSpeed = 1.0f;
         [SerializeField] private float attackCoolTime = 3.0f;
+        [SerializeField] private float attackRadius = 1.0f;
+
         [SerializeReference] private AnimationClip idleAnimationClip;
         [SerializeReference] private AnimationClip moveAnimationClip;
         [SerializeReference] private AnimationClip attackAnimationClip;
@@ -25,6 +26,7 @@ namespace SOD
         public float AttackSpeed => attackSpeed;
         public float AttackRange => attackRange;
         public float AttackCoolTime => attackCoolTime;
+        public float AttackRadius => attackRadius;
     }
 
     [RequireComponent(typeof(AnimancerComponent))]    
@@ -35,6 +37,7 @@ namespace SOD
         [SerializeField] private GameObject destroyFXPrefab;
         [SerializeField] private EnemyAI ai;
         [SerializeField] private GameObject expOrbPrefab;
+        [SerializeField] private Transform attackTrans;
 
         private AnimancerComponent animancer;
         private CharacterControllerForcer forcer;
@@ -46,6 +49,7 @@ namespace SOD
         public Animator Animator { get; private set; }
         public Rotator Rotator { get; private set; }
         public bool IsAttackable { get; private set; } = true;
+        public Transform AttackTrans => attackTrans;
 
         protected override void Awake()
         {
@@ -102,6 +106,9 @@ namespace SOD
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(this.transform.position, data.AttackRange);
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(attackTrans.position, data.AttackRange);
         }
     }
 }

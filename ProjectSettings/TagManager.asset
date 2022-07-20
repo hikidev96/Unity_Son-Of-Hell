@@ -8,6 +8,7 @@ TagManager:
   - EnemyHitBox
   - Ground
   - Exp
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

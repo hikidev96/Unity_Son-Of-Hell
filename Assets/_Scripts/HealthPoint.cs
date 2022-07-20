@@ -17,10 +17,10 @@ namespace SOD
     [System.Serializable]
     public class HealthPoint
     {
-        [SerializeField] private float maxHP;
+        [SerializeField] protected float maxHP;
 
+        public float CurrentHP { get; protected set; }
         public UnityEvent OnDie { get; private set; } = new UnityEvent();
-        public float CurrentHP { get; private set; }
         public bool IsDead { get; private set; }
 
         public virtual void Damage(DamageData damageData)

@@ -9,6 +9,7 @@ namespace SOD
         [SerializeField] private HandController handController;
         [SerializeField] private DashController dashController;
         [SerializeField] private ExpBehaviour expBehaviour;
+        [SerializeField] private PlayerHealthPoint healthPoint;
 
         private Rotator rotator;
         private PlayerMovementValueController movementValueController;
@@ -21,7 +22,7 @@ namespace SOD
         protected override void Awake()
         {
             base.Awake();
-
+            healthPoint.Init();
             rotator = new Rotator(this.transform);
             movementValueController = new PlayerMovementValueController(this, animancer);
             animationPlayer = new Animator(animancer);
