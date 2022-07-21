@@ -10,13 +10,22 @@ namespace SOD
         [SerializeField] private GameObject fireFXPrefab;
         [SerializeField] private GameObject projectilePrefab;
 
-        public bool IsReadyToFire { get; private set; } = true;
+        public Timer FireCoolTimer { get; private set; }
+        public bool IsReadyToFire { get; private set; } = true;      
+        public float FireRate => fireRate;
+
+        private void Awake()
+        {
+            FireCoolTimer = new Timer();
+        }
 
         virtual public void Fire(Transform attackTrans)
         {
+            IsReadyToFire = false;
+
             SpawnFireFX(attackTrans);
             SpawnProjectile(attackTrans);
-            StartCoroutine(WaitForReadyToFire());
+            StartCoolTimer();
         }
 
         private void SpawnFireFX(Transform spawnTrans)
@@ -41,11 +50,9 @@ namespace SOD
             rotator.RotateTowardMouse();
         }
 
-        private IEnumerator WaitForReadyToFire()
+        private void StartCoolTimer()
         {
-            IsReadyToFire = false;
-            yield return new WaitForSeconds(fireRate);
-            IsReadyToFire = true;
+            FireCoolTimer.StartTimer(fireRate, () => IsReadyToFire = true);
         }
     }
 }

@@ -1131,10 +1131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725fde2b1444d5041848c8247b803aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: d8dd5615d46b673428fea008bb4329c5, type: 2}
   fireTrans: {fileID: 2285237703515622162}
   rightHandIKTarget: {fileID: 5236201761276808399}
   rightHand: {fileID: 2816741069955048079}
+  playerHandData: {fileID: 11400000, guid: fc12644107217b84b98d592f25604128, type: 2}
 --- !u!1 &2660542873597047750
 GameObject:
   m_ObjectHideFlags: 0

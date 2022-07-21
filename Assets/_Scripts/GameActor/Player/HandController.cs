@@ -6,15 +6,13 @@ namespace SOD
 {
     public class HandController : MonoBehaviour
     {
-        [SerializeField] private PlayerData playerData;
         [SerializeField] private Transform fireTrans;
         [SerializeField] private GameObject rightHandIKTarget;
         [SerializeField] private GameObject rightHand;
+        [SerializeField] private PlayerHandData playerHandData;
 
         private Hand hand;
         private Tweener recoilAnimationTweener;
-
-        public Hand Hand => hand;
 
         public void TryAttack()
         {
@@ -29,7 +27,7 @@ namespace SOD
             }
 
             Attack();
-            PlayRecoilAnimation();
+            PlayRecoilAnimation();            
         }
 
         [Button]
@@ -41,6 +39,7 @@ namespace SOD
 
         private void SetHand(Hand hand)
         {
+            playerHandData.Hand = hand;
             this.hand = hand;
         }
 
