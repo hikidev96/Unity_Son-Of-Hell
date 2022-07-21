@@ -9,14 +9,13 @@ namespace SOD
         [SerializeField] private CharacterController characterController;
         [SerializeField] private TrailGenerator trailGenerator;
         [SerializeField] private UnityEngine.Animator animator;
-        [SerializeField] private float TEMP_dashTime = 0.25f; // should be in playerData
-        [SerializeField] private float TEMP_dashSpeed = 50.0f; // should be in playerData        
-
-        private bool isDashing;
+        [SerializeField] private PlayerDashData playerDashData;
+        
+        private bool isDashable = true;
 
         public void TryDash()
         {
-            if (isDashing == true)
+            if (isDashable == false)
             {
                 return;
             }
@@ -26,19 +25,24 @@ namespace SOD
 
         private IEnumerator Dash()
         {
-            isDashing = true;
+            isDashable = false;
             DisableRootMotion();
             EnableTrail();
+            StartDashCoolTimer();
             var dashStartTime = Time.time;
             var dirToDash = GetDirToDash();
-            while (dashStartTime + TEMP_dashTime > Time.time)
+            while (dashStartTime + playerDashData.DashTime > Time.time)
             {
-                characterController.SimpleMove(dirToDash * TEMP_dashSpeed);
+                characterController.SimpleMove(dirToDash * playerDashData.DashSpeed);
                 yield return null;
             }
             EnableRootMotion();
-            DisableTrail();
-            isDashing = false;
+            DisableTrail();            
+        }
+
+        private void StartDashCoolTimer()
+        {
+            playerDashData.DashCoolTimer.StartTimer(playerDashData.DashCoolTime, () => isDashable = true);
         }
 
         private Vector3 GetDirToDash()

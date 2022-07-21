@@ -2042,8 +2042,7 @@ MonoBehaviour:
   characterController: {fileID: 4967457825469896623}
   trailGenerator: {fileID: 2865548806410027597}
   animator: {fileID: 7432536554186243561}
-  TEMP_dashTime: 0.25
-  TEMP_dashSpeed: 20
+  playerDashData: {fileID: 11400000, guid: c6cbf0ca3207b864e8a3b66eded095fe, type: 2}
 --- !u!1 &5236201761276808399
 GameObject:
   m_ObjectHideFlags: 0
