@@ -9,10 +9,8 @@ namespace SOD
         Bottom,
     }
 
-    [System.Serializable]
-    public class ActorParts
+    public class ActorParts : MonoBehaviour
     {
-        [SerializeField] private GameActor actor;
         [SerializeField] private Vector3 topOffset;
         [SerializeField] private Vector3 middleOffset;
         [SerializeField] private Vector3 bottomOffset;
@@ -21,32 +19,27 @@ namespace SOD
         {
             if (actorPart == EActorPart.Top)
             {
-                return actor.transform.position + topOffset;
+                return this.transform.position + topOffset;
             }
             else if (actorPart == EActorPart.Middle)
             {
-                return actor.transform.position + middleOffset;
+                return this.transform.position + middleOffset;
             }
             else if (actorPart == EActorPart.Bottom)
             {
-                return actor.transform.position + bottomOffset;
+                return this.transform.position + bottomOffset;
             }
 
             return Vector3.zero;
         }
 
-        public void DrawGizmo()
+        private void OnDrawGizmos()
         {
-            if (actor == null)
-            {
-                return;
-            }
-
             var radious = 0.25f;
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(actor.transform.position + topOffset, radious);
-            Gizmos.DrawWireSphere(actor.transform.position + middleOffset, radious);
-            Gizmos.DrawWireSphere(actor.transform.position + bottomOffset, radious);
+            Gizmos.DrawWireSphere(this.transform.position + topOffset, radious);
+            Gizmos.DrawWireSphere(this.transform.position + middleOffset, radious);
+            Gizmos.DrawWireSphere(this.transform.position + bottomOffset, radious);
         }
     }
 }

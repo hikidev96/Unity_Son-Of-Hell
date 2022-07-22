@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
 
 namespace SOD
 {
@@ -13,9 +13,8 @@ namespace SOD
             this.Damage = damage;
         }
     }
-
-    [System.Serializable]
-    public class HealthPoint
+    
+    public class HealthPoint : MonoBehaviour
     {
         [SerializeField] protected float maxHP;
 

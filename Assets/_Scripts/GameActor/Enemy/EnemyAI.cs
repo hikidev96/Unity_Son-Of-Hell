@@ -6,26 +6,23 @@ namespace SOD
     [RequireComponent(typeof(Seeker))]   
     public class EnemyAI : MonoBehaviour
     {
-        private Seeker seeker;
-        private Player player;
+        [SerializeField] private PlayerTransformData playerTransformData;
 
-        public Player Player => player;
+        private Seeker seeker;
 
         private void Awake()
         {
-            player = FindObjectOfType<Player>();
-
             seeker = GetComponent<Seeker>();
         }
 
         public void CalculatePath(OnPathDelegate callback)
         {
-            seeker.StartPath(this.transform.position, player.transform.position, callback);
+            seeker.StartPath(this.transform.position, playerTransformData.Get().position, callback);
         }
 
         public bool PlayerIsInRange(float range)
         {
-            return Vector3.Distance(this.transform.position, player.transform.position) <= range;
+            return Vector3.Distance(this.transform.position, playerTransformData.Get().position) <= range;
         }
     }
 }

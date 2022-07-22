@@ -13,8 +13,14 @@ namespace SOD
 
         protected override void FixedUpdate()
         {
-            base.FixedUpdate();
-            rb.MovePosition(rb.position + this.transform.forward * speed * Time.deltaTime);            
+            base.FixedUpdate();            
+        }
+
+        protected override void Hit(HitBox hitBox)
+        {
+            base.Hit(hitBox);
+
+            hitBox.GameActor.gameObject.AddComponent<Encroachment>();
         }
     }
 }

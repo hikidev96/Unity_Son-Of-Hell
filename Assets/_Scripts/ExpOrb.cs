@@ -15,21 +15,24 @@ namespace SOD
         private void Awake()
         {
             player = FindObjectOfType<Player>();
-        }
+        }        
 
         public void Start()
         {
             var randomDir = new Vector3(Random.Range(-1.0f, 1.0f), 1.0f, Random.Range(-1.0f, 1.0f));
             var randomPower = Random.Range(3.0f, 7.0f);
             rb.AddForce(randomDir * randomPower, ForceMode.Impulse);
+
+            Activate();
         }
 
         private void FixedUpdate()
         {
             if (player != null && isActivated == true && isGrounded == true)
             {
-                var dirTowardPlayer = (player.GetActorPart(EActorPart.Middle) - this.transform.position).normalized;
-                rb.MovePosition(rb.position + (dirTowardPlayer * Time.deltaTime * 15.0f));
+                var dirTowardPlayer = (player.ActorParts.GetPart(EActorPart.Middle) - this.transform.position).normalized;
+                var power = (player.ActorParts.GetPart(EActorPart.Middle) - this.transform.position).magnitude;
+                rb.MovePosition(rb.position + (dirTowardPlayer * Time.deltaTime * (30.0f + power)));
             }
         }
 

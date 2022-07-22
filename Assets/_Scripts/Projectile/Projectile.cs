@@ -2,14 +2,15 @@ using UnityEngine;
 
 namespace SOD
 {
+    [RequireComponent(typeof(GameObjectLifeTimer), typeof(Rigidbody))]  
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] protected GameObject destroyFX;
+        [SerializeField] protected GameObject destructionFX;
 
         protected float speed = 5.0f;
+        protected Vector3 forwardDir;
         protected Rigidbody rb;
-
-        private GameObjectLifeTimer lifeTimer;
+        protected GameObjectLifeTimer lifeTimer;
 
         protected virtual void Awake()
         {
@@ -24,17 +25,22 @@ namespace SOD
 
         protected virtual void Start()
         {
-
+            forwardDir = this.transform.forward;
         }
 
         protected virtual void FixedUpdate()
         {
-
+            Move();
         }
 
         protected virtual void OnDisable()
         {
             lifeTimer.OnLifeOver.RemoveListener(DestrySelf);
+        }
+
+        protected virtual void Move()
+        {
+            rb.MovePosition(rb.position + forwardDir * speed * Time.deltaTime);
         }
 
         protected virtual void DestrySelf()
@@ -45,15 +51,25 @@ namespace SOD
 
         private void SpawnDestroyFX()
         {
-            Instantiate(destroyFX, this.transform.position, Quaternion.identity);
+            if (destructionFX == null)
+            {
+                return;
+            }
+
+            Instantiate(destructionFX, this.transform.position, Quaternion.identity);
+        }
+
+        protected virtual void Hit(HitBox hitBox)
+        {
+            hitBox.Hit(new HitData(new DamageData(5)));
+            DestrySelf();
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("EnemyHitBox"))
             {
-                other.gameObject.GetComponent<HitBox>().Hit(new HitData(new DamageData(5)));
-                DestrySelf();
+                Hit(other.gameObject.GetComponent<HitBox>());
             }
         }
     }

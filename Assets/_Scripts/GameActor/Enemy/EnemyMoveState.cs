@@ -9,6 +9,8 @@ namespace SOD
         private Path path;
         private float nextWaypointDistance = 3;
         private int currentWaypoint = 0;
+        private AnimancerState moveAnimationState;
+
         public bool reachedEndOfPath;
 
         public EnemyMoveState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
@@ -27,13 +29,15 @@ namespace SOD
         {
             base.Update();
 
+            moveAnimationState.Speed = enemy.MovementData.MoveSpeed;
+
             if (enemy.HealthPoint.IsDead == true)
             {
                 enemyStateMachine.ToDeadState();
                 return;
             }
 
-            if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == true)
+            if (enemy.AI.PlayerIsInRange(enemy.AttackData.AttackRange) == true)
             {
                 if (enemy.IsAttackable == true)
                 {
@@ -60,7 +64,7 @@ namespace SOD
 
         private void PlayMoveAnimation()
         {
-            enemy.Animator.Play(enemy.Data.MoveAnimationClip, enemy.Data.MoveSpeed);
+            moveAnimationState = enemy.Animator.Play(enemy.AnimationData.MoveAnimationClip, enemy.MovementData.MoveSpeed);
         }
 
         private void MoveToPlayer()

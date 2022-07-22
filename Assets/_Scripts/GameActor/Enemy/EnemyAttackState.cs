@@ -40,14 +40,14 @@ namespace SOD
 
         private void PlayAttackAnimation()
         {
-            var animationState = enemy.Animator.Play(enemy.Data.AttackAnimationClip, enemy.Data.AttackSpeed);
+            var animationState = enemy.Animator.Play(enemy.AnimationData.AttackAnimationClip, enemy.AttackData.AttackSpeed);
             animationState.Events.OnEnd = () => enemyStateMachine.ToIdleState();
             animationState.Events.Add(0.3f, DamageToTarget);
         }
         
         private void DamageToTarget()
         {
-            var overlappedColliders = Physics.OverlapSphere(enemy.AttackTrans.position, 1.0f);
+            var overlappedColliders = Physics.OverlapSphere(enemy.AttackData.AttackTrans.position, enemy.AttackData.AttackRadius);
 
             foreach (var overlappedCollider in overlappedColliders)
             {

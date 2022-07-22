@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SOD
@@ -15,8 +13,17 @@ namespace SOD
 
         protected override void FixedUpdate()
         {
-            base.FixedUpdate();
-            rb.MovePosition(rb.position + this.transform.forward * speed * Time.deltaTime);
+            base.FixedUpdate();            
+        }
+
+        protected override void Hit(HitBox hitBox)
+        {
+            base.Hit(hitBox);
+
+            if (hitBox.GameActor.gameObject.GetComponent<Chill>() == null)
+            {
+                hitBox.GameActor.gameObject.AddComponent<Chill>();
+            }            
         }
     }
 }

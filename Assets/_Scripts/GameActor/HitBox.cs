@@ -15,11 +15,14 @@ namespace SOD
 
     public class HitBox : MonoBehaviour
     {
+        [SerializeField] private GameActor gameActor;        
+
         public UnityEvent<HitData> OnHit { get; private set; } = new UnityEvent<HitData>();
+        public GameActor GameActor => gameActor;
 
         public virtual void Hit(HitData hitData)
         {
             OnHit.Invoke(hitData);
-        }
+        }        
     }
 }

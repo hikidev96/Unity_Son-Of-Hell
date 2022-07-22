@@ -493,7 +493,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -3845,7 +3844,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -5246,7 +5244,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -8607,7 +8604,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -9477,7 +9473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fc9a3e4b9a7754cbc99158f6353306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyFX: {fileID: 1376127781743262408, guid: 38ac7617af61f0e4c82dbdefd8cb2e78,
+  destructionFX: {fileID: 1376127781743262408, guid: 38ac7617af61f0e4c82dbdefd8cb2e78,
     type: 3}
 --- !u!135 &8220284925404862862
 SphereCollider:
@@ -10046,7 +10042,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -13461,7 +13456,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -14818,7 +14812,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -18215,7 +18208,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0

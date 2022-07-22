@@ -30,7 +30,6 @@ namespace SOD
             PlayRecoilAnimation();            
         }
 
-        [Button]
         public void SetHandPrefab(GameObject handPrefab)
         {
             var hand = Instantiate(handPrefab, this.transform).GetComponent<Hand>();
@@ -43,17 +42,17 @@ namespace SOD
             this.hand = hand;
         }
 
+        private void Attack()
+        {
+            ServiceProvider.CameraService.Shake(1.0f);
+            hand.Fire(fireTrans);
+        }
+
         private void PlayRecoilAnimation()
         {
             recoilAnimationTweener.ForceInit();
             recoilAnimationTweener = rightHandIKTarget.transform.DOLocalMoveY(rightHandIKTarget.transform.localPosition.y + 1.0f, 0.02f);
             recoilAnimationTweener.onComplete = () => rightHandIKTarget.transform.DOLocalMoveY(rightHandIKTarget.transform.localPosition.y - 1.0f, 0.1f);
-        }
-
-        private void Attack()
-        {
-            ServiceProvider.CameraService.Shake(1.0f);
-            hand.Fire(fireTrans);
         }
 
         private void OnDrawGizmos()

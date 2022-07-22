@@ -3,12 +3,11 @@ using DG.Tweening;
 
 namespace SOD
 {
-    [System.Serializable]
     public class PlayerHealthPoint : HealthPoint
     {
         [SerializeField] private HitBox hitbox;
         [SerializeField] private Player player;
-        [SerializeField] private Renderer renderer;
+        [SerializeField] private Renderer view;
         [SerializeField] private PlayerHealthPointData healthPointData;
 
         private Tweener colorAnimationTweener;
@@ -31,7 +30,7 @@ namespace SOD
             PlayOutlineAnimation();
             ServiceProvider.CameraService.Damage();
             ServiceProvider.CameraService.Shake();
-            ServiceProvider.UIService.SpawnDamageUI(damageData, player.GetActorPart(EActorPart.Top));
+            ServiceProvider.UIService.SpawnDamageUI(damageData, player.ActorParts.GetPart(EActorPart.Top));
 
             if (healthPointData.CurrentHp <= 0.0f)
             {
@@ -48,8 +47,8 @@ namespace SOD
                 colorAnimationTweener.Kill();
             }
 
-            renderer.material.SetColor("_MainColor", Color.red);
-            colorAnimationTweener = DOTween.To(() => renderer.material.GetColor("_MainColor"), (x) => renderer.material.SetColor("_MainColor", x), Color
+            view.material.SetColor("_MainColor", Color.red);
+            colorAnimationTweener = DOTween.To(() => view.material.GetColor("_MainColor"), (x) => view.material.SetColor("_MainColor", x), Color
                 .white, 0.5f);
         }
     }

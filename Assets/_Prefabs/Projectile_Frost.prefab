@@ -540,7 +540,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -3986,7 +3985,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -4925,7 +4923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fbac5decdd3f44e8fe2ae531841382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyFX: {fileID: 810829620585988014, guid: 26ba9005d26484042bfa941f31cc5b19,
+  destructionFX: {fileID: 810829620585988014, guid: 26ba9005d26484042bfa941f31cc5b19,
     type: 3}
 --- !u!114 &8169894645084823742
 MonoBehaviour:
@@ -5516,7 +5514,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -8971,7 +8968,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -10328,7 +10324,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -13725,7 +13720,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -15082,7 +15076,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -18488,7 +18481,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -19845,7 +19837,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -23233,7 +23224,6 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0

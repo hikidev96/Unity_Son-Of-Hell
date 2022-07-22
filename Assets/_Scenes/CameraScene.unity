@@ -472,6 +472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamera: {fileID: 739320386}
+  playerTransformData: {fileID: 11400000, guid: 38d4fa579924cfb42b3d3268dffbdc33,
+    type: 2}
 --- !u!1 &1374777130
 GameObject:
   m_ObjectHideFlags: 3

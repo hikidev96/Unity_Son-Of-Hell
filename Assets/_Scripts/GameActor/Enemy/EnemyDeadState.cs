@@ -35,7 +35,7 @@ namespace SOD
 
         private void PlayDeadAnimation()
         {
-            enemy.Animator.Play(enemy.Data.DeadAnimationClip);
+            enemy.Animator.Play(enemy.AnimationData.DeadAnimationClip);
         }
     }
 }

@@ -1,24 +1,17 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace SOD
 {
     public class GameActor : MonoBehaviour
     {
-        [SerializeField] private ActorParts actorParts;
+        [SerializeField, BoxGroup("Base")] private ActorParts actorParts;
+
+        public ActorParts ActorParts => actorParts;
 
         protected virtual void Awake()
         {
             
-        }
-        
-        public Vector3 GetActorPart(EActorPart actorPart)
-        {
-            return actorParts.GetPart(actorPart);  
-        }
-
-        protected virtual void OnDrawGizmos()
-        {
-            actorParts.DrawGizmo();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace SOD
         [SerializeField] private DashController dashController;
         [SerializeField] private ExpBehaviour expBehaviour;
         [SerializeField] private PlayerHealthPoint healthPoint;
+        [SerializeField] private PlayerTransformData transformData;
 
         private Rotator rotator;
         private PlayerMovementValueController movementValueController;
@@ -23,11 +24,12 @@ namespace SOD
         protected override void Awake()
         {
             base.Awake();
+            transformData.Set(this.transform);
             healthPoint.Init();
             rotator = new Rotator(this.transform);
             movementValueController = new PlayerMovementValueController(this, animancer);
             animationPlayer = new Animator(animancer);
-        }
+        }        
 
         public void RotateSmoothly(Vector3 dir, bool considerCamera = false)
         {

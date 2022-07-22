@@ -7,6 +7,7 @@ namespace SOD
     public class FollowCamera : MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera followCamera;
+        [SerializeField] private PlayerTransformData playerTransformData;
 
         private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
 
@@ -17,13 +18,9 @@ namespace SOD
 
         private void Start()
         {
-            var player = FindObjectOfType<Player>();
-            if (player != null)
-            {
-                followCamera.Follow = player.transform;
-            }
+            followCamera.Follow = playerTransformData.Get();
         }
-        
+
         public void Shake(float power = 2.0f)
         {
             cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = power;

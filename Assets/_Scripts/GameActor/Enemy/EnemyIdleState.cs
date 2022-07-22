@@ -28,11 +28,11 @@ namespace SOD
                 return;
             }
 
-            if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == false)
+            if (enemy.AI.PlayerIsInRange(enemy.AttackData.AttackRange) == false)
             {
                 enemyStateMachine.ToMoveState();
             }
-            else if (enemy.AI.PlayerIsInRange(enemy.Data.AttackRange) == true && enemy.IsAttackable == true)
+            else if (enemy.AI.PlayerIsInRange(enemy.AttackData.AttackRange) == true && enemy.IsAttackable == true)
             {
                 enemyStateMachine.ToAttackState();
             }
@@ -50,7 +50,7 @@ namespace SOD
 
         private void PlayIdleAnimation()
         {
-            enemy.Animator.Play(enemy.Data.IdleAnimationClip);
+            enemy.Animator.Play(enemy.AnimationData.IdleAnimationClip);
         }
     }
 }
