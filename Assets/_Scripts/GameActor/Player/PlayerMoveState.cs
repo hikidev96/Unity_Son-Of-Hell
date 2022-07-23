@@ -23,7 +23,7 @@ namespace SOD
         {
             base.Update();
 
-            player.RotateTowardMouse();
+            player.Rotator.RotateTowardMouse();
             player.ApplyMovementValue();
 
             if (ServiceProvider.InputService.IsHandFireKeyPress == true)
@@ -44,7 +44,7 @@ namespace SOD
 
         private void PlayMoveAnimation()
         {
-            player.PlayAnimation(player.Data.MoveAnimationClip, player.Data.MoveSpeed);
+            player.PlayAnimation(player.AnimationData.MoveAnimationClip, player.MovementData.MoveSpeed);
         }
     }
 }

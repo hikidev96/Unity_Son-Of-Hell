@@ -12,7 +12,7 @@ namespace SOD
         {
             this.player = player;
 
-            var state = animancer.States.GetOrCreate(player.Data.MoveAnimationClip);
+            var state = animancer.States.GetOrCreate(player.AnimationData.MoveAnimationClip);
             moveState = (MixerState<Vector2>)state;
         }
 

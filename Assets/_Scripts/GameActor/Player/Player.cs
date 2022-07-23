@@ -1,22 +1,24 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace SOD
 {
     public class Player : GameActor
     {
-        [SerializeField] private Animancer.AnimancerComponent animancer;
-        [SerializeField] private PlayerData data;
+        [SerializeField, BoxGroup("Base")] private Animancer.AnimancerComponent animancer;
+        [SerializeField, BoxGroup("Data")] private PlayerAnimationData animationData;
+        [SerializeField, BoxGroup("Data")] private PlayerMovementData movementData;
+        [SerializeField, BoxGroup("Data")] private PlayerTransformData transformData;
         [SerializeField] private HandController handController;
         [SerializeField] private DashController dashController;
         [SerializeField] private ExpBehaviour expBehaviour;
         [SerializeField] private PlayerHealthPoint healthPoint;
-        [SerializeField] private PlayerTransformData transformData;
-
-        private Rotator rotator;
+        
         private PlayerMovementValueController movementValueController;
         private Animator animationPlayer;
 
-        public PlayerData Data => data;        
+        public PlayerAnimationData AnimationData => animationData;        
+        public PlayerMovementData MovementData => movementData;
         public HandController HandController => handController;
         public ExpBehaviour ExpBehaviour => expBehaviour;   
         public HealthPoint HealthPoint => healthPoint;  
@@ -25,26 +27,10 @@ namespace SOD
         {
             base.Awake();
             transformData.Set(this.transform);
-            healthPoint.Init();
-            rotator = new Rotator(this.transform);
+            healthPoint.Init();            
             movementValueController = new PlayerMovementValueController(this, animancer);
             animationPlayer = new Animator(animancer);
         }        
-
-        public void RotateSmoothly(Vector3 dir, bool considerCamera = false)
-        {
-            rotator.RotateSmoothly(dir, considerCamera);
-        }
-
-        public void RotateDirectly(Vector3 dir, bool considerCamera = false)
-        {
-            rotator.RotateDirectly(dir, considerCamera);
-        }
-
-        public void RotateTowardMouse(bool considerCamera = true)
-        {
-            rotator.RotateTowardMouse(considerCamera);
-        }
 
         public Animancer.AnimancerState PlayAnimation(AnimationClip clip, float speed = 1.0f)
         {

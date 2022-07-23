@@ -5,7 +5,7 @@ namespace SOD
 {
     public class DashController : MonoBehaviour
     {
-        [SerializeField] private PlayerData playerData;       
+        [SerializeField] private PlayerAnimationData playerData;       
         [SerializeField] private CharacterController characterController;
         [SerializeField] private TrailGenerator trailGenerator;
         [SerializeField] private UnityEngine.Animator animator;

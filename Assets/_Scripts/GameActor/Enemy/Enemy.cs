@@ -77,7 +77,6 @@ namespace SOD
         public CharacterControllerForcer Forcer => forcer;
         public EnemyAI AI => ai;
         public Animator Animator { get; private set; }
-        public Rotator Rotator { get; private set; }
         public bool IsAttackable { get; private set; } = true;
 
         protected override void Awake()
@@ -87,8 +86,7 @@ namespace SOD
             animancer = GetComponent<AnimancerComponent>();
             forcer = GetComponent<CharacterControllerForcer>();
 
-            healthPoint.Init();
-            Rotator = new Rotator(this.transform);
+            healthPoint.Init();            
             Animator = new Animator(animancer);            
         }
 

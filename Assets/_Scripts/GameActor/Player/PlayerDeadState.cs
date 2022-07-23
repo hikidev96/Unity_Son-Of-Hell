@@ -42,7 +42,7 @@ namespace SOD
 
         private AnimancerState PlayDeadAnimation()
         {
-            return player.PlayAnimation(player.Data.DeadAnimationClip, player.Data.MoveSpeed);
+            return player.PlayAnimation(player.AnimationData.DeadAnimationClip, player.MovementData.MoveSpeed);
         }
     }
 }

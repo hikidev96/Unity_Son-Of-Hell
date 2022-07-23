@@ -1728,7 +1728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorParts: {fileID: 753379212004160195}
   animancer: {fileID: 697286998}
-  data: {fileID: 11400000, guid: d8dd5615d46b673428fea008bb4329c5, type: 2}
+  animationData: {fileID: 11400000, guid: d8dd5615d46b673428fea008bb4329c5, type: 2}
+  movementData: {fileID: 11400000, guid: b14a0abe5881ca54aa73f22901f1a6fd, type: 2}
   handController: {fileID: 7327529805942106871}
   dashController: {fileID: 7214925193711169965}
   expBehaviour: {fileID: 3239641638824457050}
